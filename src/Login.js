@@ -5,9 +5,10 @@ import { login } from './features/userSlice';
 import {url} from './BaseUrl';
 import logo from './assets/logo.png'
 import './Login.css'
+import { useHistory } from 'react-router';
 
 function Login() {
- 
+ let history = useHistory();
     const [password, setPassword] = useState('');
     const [name, setName] = useState('');
  
@@ -20,13 +21,14 @@ function Login() {
             password: password
           })
           .then((response) => {
-         
           dispatch(login({
           email : response.data.email,
           username :response.data.username
-
-          }))
-
+          })) 
+          
+          history.push('/aceuil') 
+           
+          
           }, (error) => {
             console.log(error);
           });
