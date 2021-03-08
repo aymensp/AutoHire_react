@@ -5,6 +5,7 @@ import Acceuil from './Acceuil';
 import './App.css';
 import { selectUser } from './features/userSlice';
 import Login from './Login'; 
+import Profile from './Profile';
 
 
 
@@ -30,7 +31,7 @@ function App() {
 
      {
 user?
-<Acceuil/>
+<Profile/>
 :
 <Login/>
 
