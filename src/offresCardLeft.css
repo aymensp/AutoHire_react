@@ -1,0 +1,28 @@
+
+  .offre__header {
+    display: flex;
+ 
+    
+  }
+  .offre__header > img {
+margin-top: 7px;
+
+  }
+  .offre__info {
+    margin-left: 10px;
+   
+  }
+  .offre__info > h3:hover{
+    text-decoration-line: underline
+  }
+  .offre__info > h3 {
+    color: #0a66c2!important;
+    line-height: 1.5;
+  }
+  .offre__info > p {
+    font-size: 14px  !important;
+    color : rgba(0,0,0,0.6);
+    line-height: 1.4;
+ 
+  }
+  

@@ -1,0 +1,76 @@
+
+  .offre_card  {
+padding: 20px;
+   
+  }
+  .offre_card_header {
+    display: flex;
+ 
+    
+  }
+  .offre_card_header > img {
+
+
+  }
+  .offre_card_info {
+   padding-left: 20px;
+   
+  }
+  .offre_card_info > h2 {
+   
+    line-height: 1.5;
+    font-size: 1.7rem;
+    font-weight: normal;
+    cursor: pointer;
+   
+  }
+  .offre_card_info > h2:hover{
+    text-decoration-line: underline
+  }
+  .offre_card_info > p {
+    font-size: 16px  !important;
+    
+    color : rgba(0,0,0,0.6);
+    line-height: 1.6;
+ 
+  }
+  .btn {
+    background-color: #eb0392 ;
+     color : white ;
+     padding-left:  1.2rem;
+     padding-right: 1.2rem;
+     font-weight:bold;
+     font-size : 100%;
+     border-radius :20px;
+     border:none;
+      align-items: center;
+      height:40px ;
+      margin-right:8px ;
+      cursor: pointer;
+      
+  }
+  .btn2{
+
+    
+    padding-left:  1.2rem;
+    padding-right: 1.2rem;
+    font-weight:bold;
+    font-size : 100%;
+    border-radius :20px;
+    border:none;
+     align-items: center;
+     height:40px ;
+     margin-right:8px ;
+     cursor: pointer;
+     background-color: white;
+     color:  #eb0392;
+     box-shadow: inset 0 0 0 1px #eb0392;
+    
+  }
+  .btn2:hover{
+    background-color: #ffd1ed;
+    box-shadow:inset 0 0 0 2px #eb0392
+  }
+  .btn:hover {
+   background-color: #ad066d;
+  }

@@ -1,17 +1,15 @@
 .profile {
     background-color: #f3f2ef;
-    height: 800px;
+    height: 100%;
     width: 100%;
-
+    
   
 }
 
 .profile__body {
   margin-top: 50px;
-  margin-left: 100px;
-margin-right: -60px;
   display: flex;
-  
+  margin-left: 130px;
 }
 
 
@@ -24,6 +22,7 @@ margin-right: -60px;
   flex-direction: column;
   align-items: right;
   padding-bottom: 10px;
+ 
   margin-bottom: 10px;
 
   

@@ -6,6 +6,9 @@ import './App.css';
 import { selectUser } from './features/userSlice';
 import Login from './Login'; 
 import Profile from './Profile';
+import Test from './offres';
+import OffreCardsLeft from './offreCardsLeft';
+import Offres from './offres';
 
 
 
@@ -29,11 +32,18 @@ function App() {
   return (
     <div >
 
+
+
+
+
+
+
+
      {
 user?
-<Profile/>
+<Acceuil/>
 :
-<Login/>
+<Offres/>
 
      }
 

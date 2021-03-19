@@ -1,14 +1,70 @@
-import React from 'react'
+import React , { useState ,useEffect} from 'react'
 import './Profile.css';
 import './Sidebar.css';
 import Header from './Header';
 import logo from './assets/logoHeader.png'
+import { selectUser } from './features/userSlice'
+
 import './App.css';
 import Sidebar from './Sidebar';
+import {url} from './BaseUrl';
+import Modal from './uploadPdf'
 import { Avatar } from '@material-ui/core';
-
+import Auxiliary from './Auxiliary'
+import Test from './offres'
+import axios from 'axios';
+import { useSelector } from 'react-redux'
 function Profile() {
+    
+ const [purchasing ,setPurchasing] = useState(false);
+ const [user ,setUser] = useState([]);
+ const userCurrent = useSelector(selectUser)
 
+ useEffect(() => {
+        
+      axios.post(`${url}user/me`, {
+        username: userCurrent.username,
+        
+      }).then( res => {
+          console.log(res.data);
+
+          setUser(res.data) ;
+          console.log(user);
+
+      })   
+    }
+        
+       
+,[])
+const checkResume = (resume) => {
+
+if ((resume === "NORESUME") || (resume === "null") ){
+
+    return false;
+}
+return true;
+} 
+
+const profileCards = (<Auxiliary>
+
+<div className="profile__content_top">
+
+<p style={{fontSize:"18px" , maxWidth : '450px' , lineHeight: '1.3333' ,marginLeft:'20px' ,marginTop:'20px'}}>Experience </p>
+<p style={{fontSize:"13px" , lineHeight: '1.3333' ,margin:'20px'}}>{user.experience}</p>
+</div>
+<div className="profile__content_top">
+
+<p style={{fontSize:"18px" , maxWidth : '450px' , lineHeight: '1.3333' ,marginLeft:'20px' ,marginTop:'20px'}}>Education </p>
+<p style={{fontSize:"13px" , lineHeight: '1.3333' ,margin:'20px'}}>{user.education} </p>
+</div>
+<div className="profile__content_top">  
+
+<p style={{fontSize:"18px" , maxWidth : '450px' , lineHeight: '1.3333' ,marginLeft:'20px' ,marginTop:'20px'}}>Skills </p>
+<p style={{fontSize:"13px" , lineHeight: '1.3333' ,margin:'20px'}}>{user.skills}</p>
+</div>
+</Auxiliary>);
+const hamma = checkResume(user.resume);
+console.log(hamma);
    return(
 
 <div className="profile">
@@ -43,12 +99,42 @@ function Profile() {
                 </div>
                 <div className="profile__content_top">
 
-                    <p style={{fontSize:"18px" , maxWidth : '450px' , lineHeight: '1.3333' ,marginLeft:'20px' ,marginTop:'20px'}}>About </p>
-                    <p style={{fontSize:"13px" , lineHeight: '1.3333' ,margin:'20px'}}>A software engineering student, passionate about Web Development, Mobile Development,Cyber Security enthusiast, fearless and always eager to learn. I always keep my self up to date with the latest technologies and I enjoy working on innovative projects.
+<p style={{fontSize:"18px" , maxWidth : '450px' , lineHeight: '1.3333' ,marginLeft:'20px' ,marginTop:'20px'}}>About </p>
+<p style={{fontSize:"13px" , lineHeight: '1.3333' ,margin:'20px'}}>A software engineering student, passionate about Web Development, Mobile Development,Cyber Security enthusiast, fearless and always eager to learn. I always keep my self up to date with the latest technologies and I enjoy working on innovative projects.
 
-                    Tags: JavaScript, TypeScript, Angular, Android ,Redux, HTML5, CSS3, Bootstrap, JQuery, Sass, UI/UX Concepts, NodeJS, MySQL, MongoDB, REST APIs, ExpressJS, GraphQL, Git </p>
-                </div>
+Tags: JavaScript, TypeScript, Angular, Android ,Redux, HTML5, CSS3, Bootstrap, JQuery, Sass, UI/UX Concepts, NodeJS, MySQL, MongoDB, REST APIs, ExpressJS, GraphQL, Git </p>
+</div>
+
+
+
+
+
+{  hamma ? profileCards : 
+<Auxiliary> 
+    
+<Modal show={purchasing} modalClosed={()=>setPurchasing(false)}/> 
+  
+
+
+<div className="profile__content_top" style={{padding : '10px',alignItems: 'center' }}> 
+
+<button style={{backgroundColor:'#eb0392' , color : 'white' ,borderRadius :'10px', alignItems: 'center',width :'300px' ,height:'30px'}} 
+onClick={()=>setPurchasing(true)}
+> Upload Resume To update your Profile</button>
+
+</div>
+</Auxiliary>
+
+
+}
+
                 
+
+
+
+
+
+
             </div>
             
         

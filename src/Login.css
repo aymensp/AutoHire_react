@@ -1,10 +1,16 @@
 .login {
+  margin-top: 70px;
   display: grid;
   place-items: center;
   margin-left: auto;
   margin-right: auto;
   padding-top: 100px;
   padding-bottom: 100px;
+  width: 400px;
+  height: 300px;
+ border-radius: 10px ;
+ border: 2px solid lightgray;
+
 }
 
 .login > img {
@@ -17,6 +23,7 @@
 .login > form {
   display: flex;
   flex-direction: column;
+  align-content: center;
 }
 
 .login > form > input {
@@ -28,19 +35,23 @@
   border-radius: 5px;
   outline-color: #eb0392;
 }
+.login > form > input:hover{
 
+  box-shadow: inset 0 0 0 1px var(--color-border);
+}
 .login > form > button {
   width: 365px;
   height: 50px;
   font-size: large;
   color: #fff;
   background-color: #eb0392;
+  border-color: #eb0392;
   border-radius: 25px;
 }
 
 
+.login > form > button:hover {
 
-.login > p {
-  margin-top: 20px;
-  font-weight: bolder;
+  background: #c20078;
+  border: none;
 }
