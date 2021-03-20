@@ -1,6 +1,6 @@
 
   .offre_card  {
-padding: 20px;
+padding: 25px;
    
   }
   .offre_card_header {
@@ -9,7 +9,8 @@ padding: 20px;
     
   }
   .offre_card_header > img {
-
+   
+    margin-top: 10px;
 
   }
   .offre_card_info {
@@ -33,6 +34,10 @@ padding: 20px;
     color : rgba(0,0,0,0.6);
     line-height: 1.6;
  
+  }
+  .offre_card_info > p:hover{
+    text-decoration-line: underline;
+    cursor: pointer;
   }
   .btn {
     background-color: #eb0392 ;
@@ -74,3 +79,45 @@ padding: 20px;
   .btn:hover {
    background-color: #ad066d;
   }
+  .offre_card_footer {  
+    padding: 20px;
+ 
+  }
+  .offre_description{
+    padding-top: 10px;
+    padding-left: 20px;
+  }
+  .offre_description >h5 { 
+
+    font-size: 15px;
+    font-weight: 600;
+  }
+  .offre_description > p {
+
+    margin-top: 15px;
+    line-height: 1.5;
+    font-size: 14px;
+    font-weight: 400;
+    
+  }
+  .offre_description_details{
+
+    columns: auto 2;
+    margin-top: 15px;
+  }
+  .offre_box{
+
+    break-inside: auto;
+  }
+  .offre_box > h3{
+    font-size: 15px;
+    line-height: 1.4;
+    font-weight: 600;
+  }
+  .offre_box > p{
+    font-size: 15px;
+    line-height: 1.4;
+    font-weight: 400;
+    margin-bottom: 12px;
+  }
+  

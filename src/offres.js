@@ -8,6 +8,7 @@ import OffreCardsLeft from "./offreCardsLeft"
 import {url} from './BaseUrl'
 import axios from 'axios' ;
 import OffreCardRight from "./offreCardRight"
+import { Height } from "@material-ui/icons"
 function Offres() {
 
   const [posts, setPosts] = useState([])
@@ -25,10 +26,15 @@ function Offres() {
     return (
       <div className="offres">
        <Header/>
-       <Tabs>
+     
+          <Tabs>
          <TabNav>
            
-          
+          <header style={{borderBottom:'1px solid rgba(0,0,0,0.08)'}}>
+            <div style={{ padding:' 8px 12px 8px 10px',borderLeft:'solid 2px #eb0392' , alignItems:'center' , display:'flex' ,height:'56px'}}>
+             <h1 style={{fontSize:'18px',fontWeight:'400',lineHeight:'1.5'}}>Jobs based on your Profile</h1>
+            </div>
+          </header>
             {posts.map(({ id,  titre, industry, address ,createdAt   }) => (
               <TabNavItem key={id}> 
                <FlipMove>
@@ -49,8 +55,8 @@ function Offres() {
          </TabNav>
   
          <TabContent >
-        
-            {posts.map(({ id,  titre, industry, address ,createdAt  }) => (
+        <div></div>
+            {posts.map(({ id,  titre, industry, address ,createdAt,description , salary , poste , jobTime , type   }) => (
               <TabPanel key={id}>
                 <FlipMove>
                   <OffreCardRight
@@ -59,6 +65,11 @@ function Offres() {
                 company={industry}
                 addresse ={address}
                 date ={createdAt}
+                description={description} 
+                salary={salary}
+                poste={poste}
+                jobTime={jobTime}
+                type ={type}
                 />
                 </FlipMove>
                 </TabPanel>
@@ -70,6 +81,7 @@ function Offres() {
            
          </TabContent>
        </Tabs>
+     
       </div>
          
      

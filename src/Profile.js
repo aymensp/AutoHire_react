@@ -112,13 +112,13 @@ Tags: JavaScript, TypeScript, Angular, Android ,Redux, HTML5, CSS3, Bootstrap, J
 {  hamma ? profileCards : 
 <Auxiliary> 
     
-<Modal show={purchasing} modalClosed={()=>setPurchasing(false)}/> 
+<Modal experience={user.experience} skills={user.skills} education={user.education} show={purchasing} modalClosed={()=>setPurchasing(false)}/> 
   
 
 
 <div className="profile__content_top" style={{padding : '10px',alignItems: 'center' }}> 
 
-<button style={{backgroundColor:'#eb0392' , color : 'white' ,borderRadius :'10px', alignItems: 'center',width :'300px' ,height:'30px'}} 
+<button style={{backgroundColor:'#eb0392',border:'none' , color : 'white' ,borderRadius :'10px', alignItems: 'center',width :'300px' ,height:'30px'}} 
 onClick={()=>setPurchasing(true)}
 > Upload Resume To update your Profile</button>
 

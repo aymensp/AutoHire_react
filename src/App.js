@@ -41,9 +41,9 @@ function App() {
 
      {
 user?
-<Acceuil/>
+<Profile/>
 :
-<Offres/>
+<Login/>
 
      }
 
