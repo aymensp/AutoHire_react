@@ -1,6 +1,8 @@
 .feed {
   flex: 0.64;
+  
   margin: 0 20px;
+
 }
 
 .feed__inputContainer {

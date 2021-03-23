@@ -9,6 +9,7 @@ import Profile from './Profile';
 import Test from './offres';
 import OffreCardsLeft from './offreCardsLeft';
 import Offres from './offres';
+import PostedJob from './PostedJob';
 
 
 
@@ -41,7 +42,7 @@ function App() {
 
      {
 user?
-<Profile/>
+<Offres/>
 :
 <Login/>
 

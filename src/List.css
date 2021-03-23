@@ -1,0 +1,29 @@
+.list {
+    margin: 0 20px;
+   background-color: white;
+    border-radius: 15px;
+    border: 1px solid rgb(219, 214, 214)  !important;
+    height: 100%;
+  flex: 0.4;
+    padding: 20px;
+  }
+.list>ul {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    font-size: 100%;
+    vertical-align: baseline;
+    background: transparent;
+    display: flex;
+    flex-direction: column;
+    overflow-y: auto;
+    box-sizing: border-box;
+    list-style: none!important;
+  
+  
+}
+.list>li {
+
+ 
+
+}
