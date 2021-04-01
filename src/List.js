@@ -15,6 +15,7 @@ function List() {
         axios.get(`${url}offre/All/Offre`).then( res => {
            console.log(res.data)
            setPosts(res.data)
+           console.log(res.data.description)
           })   
         }
             

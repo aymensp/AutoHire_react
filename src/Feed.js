@@ -19,7 +19,7 @@ function Feed() {
     useEffect(() => {
         
         axios.get(`${url}offre/All/Offre`).then( res => {
-           console.log(res)
+         
            setPosts(res.data)
           })   
         }
@@ -60,7 +60,7 @@ function Feed() {
             </div>
              */}
              
-            <FlipMove>
+            <FlipMove key="hamm">
             {posts.map(({ id,  titre, industry, description  }) => (
                 <Post 
                 key={id}

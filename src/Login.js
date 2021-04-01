@@ -11,31 +11,22 @@ function Login() {
  let history = useHistory();
     const [password, setPassword] = useState('');
     const [name, setName] = useState('');
- 
-    const dispatch = useDispatch();
-    
-    const loginToApp = (e) => {
+  const loginToApp = (e) => {
         e.preventDefault();
         axios.post(`${url}auth/login`, {
             username: name,
             password: password
           })
           .then((response) => {
-          dispatch(login({
-          email : response.data.email,
-          username :response.data.username
-          })) 
+          localStorage.setItem('user',JSON.stringify(response.data))
           
-          history.push('/aceuil') 
-           
-          
-          }, (error) => {
+          history.push('/home') 
+     
+        }, (error) => {
             console.log(error);
           });
     }
-    
-    
-    return (
+   return (
         <div className="login">
             <img src={logo} alt=""/>
             
@@ -50,5 +41,4 @@ function Login() {
         </div>
     )
 }
-
 export default Login

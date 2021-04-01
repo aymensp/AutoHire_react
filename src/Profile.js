@@ -18,20 +18,18 @@ function Profile() {
     
  const [purchasing ,setPurchasing] = useState(false);
  const [user ,setUser] = useState([]);
- const userCurrent = useSelector(selectUser)
+ const userr = localStorage.getItem('user')
+ const currentUser = JSON.parse(userr);
 
  useEffect(() => {
         
       axios.post(`${url}user/me`, {
-        username: userCurrent.username,
+        username: currentUser.username,
         
       }).then( res => {
-          console.log(res.data);
-
-          setUser(res.data) ;
-          console.log(user);
-
-      })   
+     setUser(res.data) ;
+     })  
+      console.log(user) 
     }
         
        
@@ -64,7 +62,7 @@ const profileCards = (<Auxiliary>
 </div>
 </Auxiliary>);
 const hamma = checkResume(user.resume);
-console.log(hamma);
+
    return(
 
 <div className="profile">
