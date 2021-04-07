@@ -5,6 +5,17 @@
   margin-right: 20px;
   color: gray;
   cursor: pointer;
+
+}
+.headerOption__border {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-right: 20px;
+  color: gray;
+  cursor: pointer;
+  border-left: 1px solid rgb(184, 179, 179) !important;
+  padding-left: 10px;
 }
 
 .headerOption__title {
@@ -20,5 +31,8 @@
 }
 
 .headerOption:hover {
+  color: #eb0392;
+}
+.headerOption__border:hover {
   color: #eb0392;
 }

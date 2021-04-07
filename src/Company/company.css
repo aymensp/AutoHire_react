@@ -1,0 +1,65 @@
+.company{
+
+  background-color: #f3f2ef;
+
+
+  padding: 70px 0;
+  ;
+}
+.hide{
+display: none;
+}
+.widgetsC {
+  position: sticky;
+  top: 50px;
+  flex: 0.2;
+  background-color: white;
+  border-radius: white;
+  border: 1px solid lightgray;
+  height: fit-content;
+  
+  
+}
+
+.widgets__headerC {
+  display: flex;
+  align-items: center;
+ 
+}
+
+.widgets__headerC > h2 {
+  font-size: 16px;
+  font-weight: 400;
+}
+
+.widgets__articleC {
+  display: flex;
+  cursor: pointer;
+  padding: 60px !important;
+  
+}
+
+.widgets__articleC:hover {
+  background-color: whitesmoke;
+}
+
+.widgets__articleLeftC {
+  color: #0177b7;
+}
+
+.widgets__articleLeftC > .MuiSvgIcon-root {
+  font-size: 15px;
+}
+
+.widgets__articleRightC {
+  flex: 1;
+}
+
+.widgets__articleRightC > h4 {
+  font-size: 14px;
+}
+
+.widgets__articleRightC > p {
+  font-size: 12px;
+  color: gray;
+}

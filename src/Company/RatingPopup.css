@@ -1,0 +1,30 @@
+
+.popup-inner
+{
+    position: relative;
+    padding: 32px;
+    width: 100%;
+    max-width: 600px; 
+    background-color: antiquewhite;
+
+}
+.popup-inner .close-btn
+{
+    position: relative;
+    top: 16px;
+    right: 16px;
+  
+
+    
+
+}
+input [type ="radio"]
+{
+    display: none;
+    
+}
+.star
+{
+    cursor: pointer;
+    transition: color 200ms;
+}

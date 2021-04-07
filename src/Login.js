@@ -20,18 +20,18 @@ function Login() {
           .then((response) => {
           localStorage.setItem('user',JSON.stringify(response.data))
           
-          history.push('/home') 
+          history.push('/') 
      
         }, (error) => {
             console.log(error);
           });
     }
    return (
-        <div className="login">
+        <div style={{backgroundColor:'white'}} className="login">
             <img src={logo} alt=""/>
             
             <form>
-                <input value={name} onChange={e => setName(e.target.value)} placeholder="Full name (required if registering)" type="text"/>
+                <input value={name} onChange={e => setName(e.target.value)} placeholder="Usename" type="text"/>
                 
                 <input value={password} onChange={e => setPassword(e.target.value)} placeholder="Password" type="password"/>
                 

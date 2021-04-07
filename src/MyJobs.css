@@ -1,0 +1,64 @@
+.myjobs__body {
+    display: flex;
+    margin-top: 20px;
+    }
+.myjobs__body>aside {
+overflow: visible;
+background-color: white;
+height: 100%;
+width: 21%;
+border-radius: 10px;
+border: 1px solid rgba(0, 0, 0, .15);
+position: sticky;
+
+} 
+.myjobs__body>section {
+  overflow: visible;
+  background-color: white;
+  height: 100%;
+  width: 29%;
+  border-radius: 10px;
+  border: 1px solid rgba(0, 0, 0, .15);
+  
+  position: sticky;
+  }  
+  .myjobs__body>section>h2 {
+    padding: 16px;
+    padding-top: 12px;
+    font-size: 17px;
+    line-height: 1.5;
+    font-weight: 400;
+    display: flex;
+    align-items: center; 
+   } 
+.myjobs__body>aside>h2 {
+  padding: 12px;
+  color: gray;
+  font-size: 16px;
+  line-height: 1.5;
+  font-weight: 600;
+  display: flex;
+  align-items: center; 
+}
+  .myjobs__body>aside>div {
+     border-top: 1px solid rgba(0, 0, 0, .15);  
+     padding: 12px;
+    }
+    
+    .myjobs__body>aside>div>a {
+      
+     font-size: 14px;
+     line-height: 1.4;
+     font-weight: bold;
+     cursor: pointer;
+     color: gray;
+     }
+    
+      .myjobs__body>aside>div>a:hover {
+        font-size: 14px;
+        line-height: 1.4;
+        font-weight: bold;
+        cursor: pointer;
+        color: black;
+  
+        }

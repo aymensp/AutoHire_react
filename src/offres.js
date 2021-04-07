@@ -26,11 +26,31 @@ function Offres() {
     return (
       <div className="offres">
        <Header/>
-     
+       <div className="searchBar">
+         <div className="items">
+          <button>
+            Remote
+          </button>
+          <button>
+            Date Posted
+          </button>
+          <button>
+            Experience Level
+          </button>
+          <button>
+            Company
+          </button>
+          <button>
+            Job Type
+          </button>
+         </div>
+        
+       </div>
           <Tabs>
+            
          <TabNav>
            
-          <header style={{borderBottom:'1px solid rgba(0,0,0,0.08)'}}>
+          <header style={{borderBottom:'1px solid rgba(0,0,0,0.08)',position:'sticky', zIndex:'1'}}>
             <div style={{ padding:' 8px 12px 8px 10px',borderLeft:'solid 2px #eb0392' , alignItems:'center' , display:'flex' ,height:'56px'}}>
              <h1 style={{fontSize:'18px',fontWeight:'400',lineHeight:'1.5'}}>Jobs based on your Profile</h1>
             </div>

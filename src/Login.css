@@ -29,11 +29,12 @@
 .login > form > input {
   width: 350px;
   height: 50px;
-  font-size: 10px;
+  font-size: 18px;
   padding-left: 10px;
-  margin-bottom: 10px;
+  margin-bottom: 20px;
   border-radius: 5px;
   outline-color: #eb0392;
+  border: 1px solid black;
 }
 .login > form > input:hover{
 
@@ -43,10 +44,12 @@
   width: 365px;
   height: 50px;
   font-size: large;
+  font-weight: 400;
   color: #fff;
   background-color: #eb0392;
   border-color: #eb0392;
   border-radius: 25px;
+  border: 0;
 }
 
 

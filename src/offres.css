@@ -2,9 +2,46 @@
 
   background-color: #f3f2ef;
   align-items: center;
-  height: 100%;
+  height: 100vh;
   display: flex;
   flex-direction: column;
   
 
+}
+.searchBar {
+  min-height: 60px;
+  display: flex;
+  background-color: white;
+  border-bottom: 0.1px solid lightgray;
+  width: 100%;
+  position: sticky;
+  z-index: 10;
+  top: 6%;
+  align-items: center;
+  box-shadow: 0px 4px 12px rgba(0,0,0,0.3);
+}
+.items{
+display: flex;
+position: relative;
+align-items: center;
+
+flex-wrap: wrap;
+margin: auto;
+
+
+}
+.items>button{
+
+  height: 35px;
+  
+  padding-left: 10px;
+  padding-right: 10px;
+  font-size: 16px;
+  font-weight: 700;
+  color: rgba(0,0,0,0.6);
+  background-color: white;
+  border: none;
+  border-radius: 25px;
+  box-shadow: inset 0 0 0 1px rgba(0,0,0,0.3);
+  margin: 10px;
 }

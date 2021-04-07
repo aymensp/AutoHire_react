@@ -3,24 +3,19 @@ import './Profile.css';
 import './Sidebar.css';
 import Header from './Header';
 import logo from './assets/logoHeader.png'
-import { selectUser } from './features/userSlice'
-
+import CreateTwoToneIcon from '@material-ui/icons/CreateTwoTone';
 import './App.css';
 import Sidebar from './Sidebar';
 import {url} from './BaseUrl';
 import Modal from './uploadPdf'
-import { Avatar } from '@material-ui/core';
+import { Avatar, Icon } from '@material-ui/core';
 import Auxiliary from './Auxiliary'
-import Test from './offres'
 import axios from 'axios';
-import { useSelector } from 'react-redux'
 function Profile() {
-    
  const [purchasing ,setPurchasing] = useState(false);
  const [user ,setUser] = useState([]);
  const userr = localStorage.getItem('user')
  const currentUser = JSON.parse(userr);
-
  useEffect(() => {
         
       axios.post(`${url}user/me`, {
@@ -29,7 +24,7 @@ function Profile() {
       }).then( res => {
      setUser(res.data) ;
      })  
-      console.log(user) 
+     
     }
         
        
@@ -62,9 +57,7 @@ const profileCards = (<Auxiliary>
 </div>
 </Auxiliary>);
 const hamma = checkResume(user.resume);
-
-   return(
-
+return(
 <div className="profile">
 
 <Header />     
@@ -73,7 +66,14 @@ const hamma = checkResume(user.resume);
             <div className="profile__content_top_left">
                 <div className="profile__content_top">
                 <img src="https://images.unsplash.com/photo-1579546929518-9e396f3cc809?ixlib=rb-1.2.1&ixid=MXwxMjA3fDBBMHxleHBsb3JlLWZlZWRBMXx8fGVufDB8fHw%3D&w=1000&q=80" alt=""/>
+                <div style={{display:'flex'}}>
                 <Avatar  src="/broken-image.jpg" className="profile__content_top__avatar"/>
+                <div style={{flex:'0.97' }}>
+                </div>
+                <div className="pencil">
+                <CreateTwoToneIcon className="pencil__icon" />
+                </div>
+                </div>
                 <div style={{display : 'flex' ,marginLeft:"20px"}}>
                 
                 <div >
@@ -96,24 +96,29 @@ const hamma = checkResume(user.resume);
                 
                 </div>
                 <div className="profile__content_top">
-
-<p style={{fontSize:"18px" , maxWidth : '450px' , lineHeight: '1.3333' ,marginLeft:'20px' ,marginTop:'20px'}}>About </p>
-<p style={{fontSize:"13px" , lineHeight: '1.3333' ,margin:'20px'}}>A software engineering student, passionate about Web Development, Mobile Development,Cyber Security enthusiast, fearless and always eager to learn. I always keep my self up to date with the latest technologies and I enjoy working on innovative projects.
-
-Tags: JavaScript, TypeScript, Angular, Android ,Redux, HTML5, CSS3, Bootstrap, JQuery, Sass, UI/UX Concepts, NodeJS, MySQL, MongoDB, REST APIs, ExpressJS, GraphQL, Git </p>
+                <div style={{display:'flex'}}>
+                    <div style={{flex:'0.97'}} >
+                    <p style={{fontSize:"18px", lineHeight: '1.3333' ,marginLeft:'20px' ,marginTop:'20px'}}>
+                    About
+                    </p>
+                    </div>
+                
+                <div className="pencil" style={{marginTop:'13px'}}>
+                <CreateTwoToneIcon className="pencil__icon" />
+                </div>
+                </div>
+                <p style={{fontSize:"13px" , lineHeight: '1.3333' ,margin:'20px'}}>
+                 A software engineering student, passionate about Web Development, Mobile Development,Cyber Security enthusiast, fearless
+                 and always eager to learn. I always keep my self up to date with the latest technologies and I enjoy working on innovative 
+                 projects. Tags: JavaScript, TypeScript, Angular, Android ,Redux, HTML5, CSS3, Bootstrap, JQuery, Sass, UI/UX Concepts, 
+                 NodeJS, MySQL, MongoDB, REST APIs, ExpressJS, GraphQL, Git
+                </p>
 </div>
-
-
-
-
-
 {  hamma ? profileCards : 
 <Auxiliary> 
     
 <Modal experience={user.experience} skills={user.skills} education={user.education} show={purchasing} modalClosed={()=>setPurchasing(false)}/> 
   
-
-
 <div className="profile__content_top" style={{padding : '10px',alignItems: 'center' }}> 
 
 <button style={{backgroundColor:'#eb0392',border:'none' , color : 'white' ,borderRadius :'10px', alignItems: 'center',width :'300px' ,height:'30px'}} 
@@ -122,20 +127,8 @@ onClick={()=>setPurchasing(true)}
 
 </div>
 </Auxiliary>
-
-
 }
-
-                
-
-
-
-
-
-
-            </div>
-            
-        
+       </div>
         <Sidebar />
       </div>
 </div>

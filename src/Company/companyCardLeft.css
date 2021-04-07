@@ -1,0 +1,28 @@
+
+  .company__header {
+    display: flex;
+ 
+    
+  }
+  .company__header > img {
+margin-top: 7px;
+
+  }
+  .company__info {
+    margin-left: 10px;
+   
+  }
+  .company__info > h3:hover{
+    text-decoration-line: underline
+  }
+  .company__info > h3 {
+    color: #0a66c2!important;
+    line-height: 1.5;
+  }
+  .company__info > p {
+    font-size: 14px  !important;
+    color : rgba(0,0,0,0.6);
+    line-height: 1.4;
+ 
+  }
+  

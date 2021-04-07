@@ -1,0 +1,36 @@
+/*
+.NavC {
+ 
+  background-color: white;
+  display: inline;
+}
+
+.NavC li {
+  display: inline;
+}
+
+.liCa {
+  display: block;
+  color: grey;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+  text-style: bold;
+
+}
+
+.liC a:hover {
+  background-color: #111;
+}
+*/
+#table, th, td {
+  border: 1px  ;
+width: 50%;
+
+background-color: white;
+}
+#th, td {
+  padding: 5px;
+  text-align: center;
+ 
+}

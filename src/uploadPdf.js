@@ -3,28 +3,14 @@ import Auxiliary from './Auxiliary';
 import Backdrop from './Backdrop';
 import './uploadPdf.css';
 import {url} from './BaseUrl'
-
 import axios from 'axios'
-import { getDefaultNormalizer } from '@testing-library/dom';
+
 function Modal (props) {
-
-
+const userr = localStorage.getItem('user')
+const currentUser = JSON.parse(userr);
 const [experience , setExperience] = useState(props.experience);
-const [education , setEducation] = useState(props.experience);
-const [skills , setSkills] = useState(props.experience);
-
-
-const getData =() => {
-
-    axios.get(`${url}user/Info/admin`)
-    .then(response=> {
-        console.log(response.data)
-        setSkills(response.data.skills)
-        setExperience(response.data.experience)
-        setEducation(response.data.education)
-    })
-} 
-   
+const [education , setEducation] = useState(props.education);
+const [skills , setSkills] = useState(props.skills);
 
 const onFileUpload = (event) => {
     // Create an object of formData
@@ -33,26 +19,22 @@ const onFileUpload = (event) => {
     formData.append(
       "upl",
       event.target.files[0],
-      "admin.pdf",  
+      `${currentUser.username}.pdf`,  
       
     );
     formData.append(
         "username",
-        "admin"
+        `${currentUser.username}`
     )
-  
+   
     // Details of the uploaded file
-    
-  
-    // Request made to the backend api
+   // Request made to the backend api
     // Send formData object
     axios.post(`${url}parseCV`, formData )
     .then(res=>{
-        console.log('hammaedins')
-        setEducation('hammaaaaaaa')
-        axios.get(`${url}user/Info/admin`)
+        console.log(res.data)
+        axios.get(`${url}user/Info/${currentUser.username}`)
         .then(response=> {
-            console.log(response.data)
             setSkills(response.data.skills)
             setExperience(response.data.experience)
             setEducation(response.data.education)
@@ -75,15 +57,8 @@ return(
         opacity: props.show ? '1': '0'
     }}
     > 
-       
-            
-
-  
-      
-       <label for="resume">Resume</label>
+    <label for="resume">Resume</label>
                 <input  className="butt" type="file"  onChange={(event) => onFileUpload(event)} />
-            
-           
                 <label for="firstname">Experience</label>
                 <textarea onChange={(event)=> setExperience(event.target.value)} type="text" id="experience" defaultValue={props.experience} value={experience} />
         

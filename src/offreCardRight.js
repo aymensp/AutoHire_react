@@ -3,19 +3,19 @@ import React ,{ forwardRef ,useEffect,useState}  from 'react'
 import logo from './assets/offre.jpeg'
 import Auxiliary from './Auxiliary'
 import './offreCardRight.css'
-import  timeago from './time'
+import {url} from './BaseUrl';
+import axios from 'axios';
+import { useHistory } from 'react-router'
 
 
 const offreCardRight = forwardRef(({ title, company, addresse, date , description , salary , poste , jobTime , type   }, ref) => {
-  
+    
+    let history = useHistory()
     const [dateNow, setDate] = useState(date)
-
     useEffect(() => {
       
         var timeStampDiffInSeconds = null;
-    
-        
-            const currentTimeStampInSeconds = parseInt(new Date().getTime()/1000);
+         const currentTimeStampInSeconds = parseInt(new Date().getTime()/1000);
             const postedDateTimeStampInSeconds = parseInt(new Date(date).getTime()/1000);
             timeStampDiffInSeconds = currentTimeStampInSeconds-postedDateTimeStampInSeconds;
          
@@ -48,21 +48,34 @@ const offreCardRight = forwardRef(({ title, company, addresse, date , descriptio
             
               
         }
-        
+  ,[])
+  const Navigate =(industry)=>{
+    history.push({pathname:'/company',
+     search:  'industry'+'='+industry
+     });
+       }
+  const Apply =( ) => {
+    axios.post(`${url}offre/apply/new`, {
+        idUser:"60595848f8f58506481467b6",
+        idOffre:"60345098dd505e28f02e7f0e"
 
-        
+           })
+              .then((response) => {
+                  console.log(response)
             
-           
-   ,[])
+            }, (error) => {
+                console.log(error);
+              });
+ }
     return (
        <Auxiliary>
            <div style={{borderBottom:'1px solid rgba(0,0,0,0.08)'}} className="offre_card">
 
-<div className="offre_card_header">
+           <div className="offre_card_header">
      <img style={{width:'120px' , height:'120px'}} src={logo} alt='hamma'></img>
      <div className="offre_card_info">
          <h2>{title}</h2>
-         <p >{company}</p>
+         <p onClick={()=>Navigate(company)} >{company}</p>
          <p >{addresse}</p>
          <div style={{   display: 'flex' , marginTop:'2px'}}>
              <p style={{ color : 'rgba(0,0,0,0.6)' , fontSize:'13px' ,lineHeight:'1.7',marginRight:'8px'}}>
@@ -71,7 +84,7 @@ const offreCardRight = forwardRef(({ title, company, addresse, date , descriptio
              <p style={{ color : '#eb0392' , fontSize:'13px',lineHeight:'1.7' }}> 14 candidats</p>
          </div>
          <div style={{   display: 'flex',flexWrap:'wrap' , marginTop:'10px'}}> 
-        <button className="btn" > Apply now</button>
+        <button onClick={Apply} className="btn" > Apply now</button>
         <button className="btn2" > Save</button>
          </div>
      </div>
