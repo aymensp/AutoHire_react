@@ -43,11 +43,13 @@ const OffreCardsLeft = forwardRef(({ title, company, addresse, date , candidats 
              else if ( timeStampDiffInSeconds>=60*60*24*30 && timeStampDiffInSeconds<60*60*24*30*365)
                  // between 30 days to 365 days
                 { setDate(""+parseInt(timeStampDiffInSeconds/(60*60*24*30)) + "months ago")  ;}
-            
+                console.log(dateNow)
               
         }
         
+       
 
+        
         
             
            

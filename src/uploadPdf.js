@@ -4,6 +4,7 @@ import Backdrop from './Backdrop';
 import './uploadPdf.css';
 import {url} from './BaseUrl'
 import axios from 'axios'
+import { useLocation } from 'react-router';
 
 function Modal (props) {
 const userr = localStorage.getItem('user')
@@ -11,7 +12,25 @@ const currentUser = JSON.parse(userr);
 const [experience , setExperience] = useState(props.experience);
 const [education , setEducation] = useState(props.education);
 const [skills , setSkills] = useState(props.skills);
-
+const saveInfo = ()=>{
+    console.log("hamma") 
+    console.log(currentUser._id)
+    axios.post(`${url}user/edit/information`, {
+        id: currentUser._id,
+        username: currentUser.username,
+        education : education,
+        skills : skills,
+        experience : experience
+        
+      }).then( res => {
+          console.log(res.data);
+          window.location.reload()
+     
+     })
+     .catch(error => {
+         console.log(error);
+     })  
+}
 const onFileUpload = (event) => {
     // Create an object of formData
     const formData = new FormData();
@@ -39,8 +58,7 @@ const onFileUpload = (event) => {
             setExperience(response.data.experience)
             setEducation(response.data.education)
         })
-
-    })
+})
     .catch(error=>{
         console.log(error);
     })
@@ -71,7 +89,7 @@ return(
                 <textarea onChange={(event)=> setSkills(event.target.value)} type="text" id="text" defaultValue={props.skills} value={skills} />
           
          
-          <button className="but" type="submit">Enregistrer</button>
+          <button onClick={()=>saveInfo()} className="but" type="submit">Enregistrer</button>
        
       
     </div>

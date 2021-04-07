@@ -11,6 +11,7 @@ import Modal from './uploadPdf'
 import { Avatar, Icon } from '@material-ui/core';
 import Auxiliary from './Auxiliary'
 import axios from 'axios';
+
 function Profile() {
  const [purchasing ,setPurchasing] = useState(false);
  const [user ,setUser] = useState([]);
@@ -29,6 +30,9 @@ function Profile() {
         
        
 ,[])
+const Capitalize =(str) =>{
+    return str.charAt(0).toUpperCase() + str.slice(1);
+    }
 const checkResume = (resume) => {
 
 if ((resume === "NORESUME") || (resume === "null") ){
@@ -67,7 +71,7 @@ return(
                 <div className="profile__content_top">
                 <img src="https://images.unsplash.com/photo-1579546929518-9e396f3cc809?ixlib=rb-1.2.1&ixid=MXwxMjA3fDBBMHxleHBsb3JlLWZlZWRBMXx8fGVufDB8fHw%3D&w=1000&q=80" alt=""/>
                 <div style={{display:'flex'}}>
-                <Avatar  src="/broken-image.jpg" className="profile__content_top__avatar"/>
+                <Avatar  src={`${process.env.PUBLIC_URL}/Users/ayman/Desktop/IOS/Mini/AutoHireBack/uploads/ayman.jpeg`} className="profile__content_top__avatar"/>
                 <div style={{flex:'0.97' }}>
                 </div>
                 <div className="pencil">
@@ -80,9 +84,9 @@ return(
                 <p style={{ fontSize: '24px',
                           
                           lineHeight: '1.5'
-                   }}>Aymen SMATI</p>
+                   }}>{Capitalize(currentUser.username)}</p>
                 <p style={{fontSize:"18px" , maxWidth : '450px' , lineHeight: '1.3333' }}>Etudiant a Ecole Superieur Prive d'Ingenieurie et de Technologie - Esprit</p>
-                <p style={{fontSize : "16px",  lineHeight: '1.5' , marginTop : '3px'}}> Tunis , Tunisia</p>
+                <p style={{fontSize : "16px",  lineHeight: '1.5' , marginTop : '3px'}}> {Capitalize(currentUser.address)}</p>
                 </div>
                 <div  style={{display : 'flex',marginLeft:"20px"  ,height:'50px' }}>
                 <img style={{
