@@ -19,7 +19,7 @@ const RatingCmp = forwardRef((props) => {
 const {idCompany} = props.match.params;
    useEffect(() => {
       
-    axios.get(`${url}avis/e/603e62487d085e0b3454cbb2`).then( res => {
+    axios.get(`${url}avis/e/Wevioo`).then( res => {
         console.log(res.data)
         setPosts(res.data)
        }) 
@@ -61,11 +61,12 @@ const RateFn = (e) => {
     axios.post(`${url}avis/newAvis`, {
         niveau: rating,
           commentaire: comment,
-          entreprise: "ho",
-          personne: "hii"
+          entreprise: "Wevioo",
+          personne: "Ayman"
       })
       .then( (response)=>{
-      
+        setComment("")
+      setRating(0)
         console.log(response.data)
 
       }
@@ -170,7 +171,7 @@ trigger={buttonPopup} setTrigger = {setButtonPopup}>
                        
                       
                          
-                       return  (  <p id = "comment" >
+                       return  (  <p id = "comment" style={{borderRadius:'25px'}}>
 
 <h2>                         
 <img className='imgCircleComment' src={logo} ></img> &nbsp;&nbsp;

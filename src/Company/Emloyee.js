@@ -99,12 +99,9 @@ const Employee = forwardRef(({idC, nom, industry ,about }) => {
                           </Typography>
                         </CardContent>
                         <CardActions>
-                        <main>
-        <button  style={{ color : 'white' , fontSize:'13px',lineHeight:'1.7' }} className="btn" onClick={()=> setButtonPopup(true)} > Ratings
-
-        </button>
+                      
        
-        </main>               </CardActions>
+                    </CardActions>
                       </Card>
                            
                           

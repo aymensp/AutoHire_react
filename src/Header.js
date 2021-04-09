@@ -115,6 +115,8 @@ function Header() {
                 <button onClick={()=>navigate('profile')} style={{cursor:'pointer',fontWeight:'bold',fontSize:'15px',width:'90%',color:'#eb0392',backgroundColor:'white',padding:'5px', margin:'10px' , borderRadius:'15px' ,border:'none',boxShadow:'inset 0 0 0 1px #eb0392'}}>View Profile</button>
                 </div>
                 <MenuItem style={{fontSize:'13px',color:'gray'}} onClick={()=>navigate('/jobsSettings')}  >Posted Jobs</MenuItem>
+                <MenuItem style={{fontSize:'13px',color:'gray'}} onClick={()=>navigate('/emp')}  >employees</MenuItem>
+
                 <MenuItem style={{fontSize:'13px',color:'gray'}}  >Settings & Privacy</MenuItem>
                 <MenuItem style={{fontSize:'13px',color:'gray'}} >Languages</MenuItem>
                 <MenuItem style={{fontSize:'13px',color:'gray'}} onClick={logoutOfApp} >Logout</MenuItem>

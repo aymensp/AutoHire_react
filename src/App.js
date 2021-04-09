@@ -10,6 +10,7 @@ import PostJob from './PostJob';
 import MyJobs from './MyJobs';
 import Company from './Company/ListC';
 import Test from './Test/Test';
+import EmployeeRH from './Company/EmployeeRH';
 
 const PrivateRoute = ({ component: Component, roles, ...rest }) => (
   <Route {...rest} render={props => {
@@ -42,7 +43,8 @@ const PrivateRoute = ({ component: Component, roles, ...rest }) => (
      <PrivateRoute exact path="/myJobs"  component={MyJobs}/>
      <PrivateRoute exact path="/postJob" roles='ADMIN' component={PostJob}/>
      <PrivateRoute path="/company" roles='test' component={Company} />
-     <PrivateRoute path="/test"  roles='test'  component={Test} />
+     <PrivateRoute path="/test"  roles='ADMIN'  component={Test} />
+     <PrivateRoute exact path="/emp" roles='ADMIN' component={EmployeeRH}/>
      </Switch> 
    </div>
   );

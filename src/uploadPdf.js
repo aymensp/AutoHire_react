@@ -13,8 +13,7 @@ const [experience , setExperience] = useState(props.experience);
 const [education , setEducation] = useState(props.education);
 const [skills , setSkills] = useState(props.skills);
 const saveInfo = ()=>{
-    console.log("hamma") 
-    console.log(currentUser._id)
+   
     axios.post(`${url}user/edit/information`, {
         id: currentUser._id,
         username: currentUser.username,
@@ -49,14 +48,17 @@ const onFileUpload = (event) => {
     // Details of the uploaded file
    // Request made to the backend api
     // Send formData object
-    axios.post(`${url}parseCV`, formData )
+    axios.post(`http://localhost:3002/parseCV`, formData )
     .then(res=>{
         console.log(res.data)
-        axios.get(`${url}user/Info/${currentUser.username}`)
+        axios.get(`http://localhost:3002/user/Info/${currentUser.username}`)
         .then(response=> {
             setSkills(response.data.skills)
             setExperience(response.data.experience)
             setEducation(response.data.education)
+        })
+        .catch(error=>{
+            console.log(error)
         })
 })
     .catch(error=>{

@@ -37,8 +37,8 @@ function RatingPopup(props)
           motivation: rating5,
           amelioration: rating6,
           commentaire: comment,
-          entreprise: "entreprise",
-          employee: user
+          entreprise: "Wevioo",
+          employee: "Ayman"
           })
           .then( (response)=>{
              
