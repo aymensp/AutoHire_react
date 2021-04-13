@@ -1,13 +1,13 @@
 import React ,{ forwardRef ,useEffect,useState}  from 'react'
-import logo from './assets/offre.jpeg'
+import logo from './assets/company.png'
 import './offresCardLeft.css'
 import  timeago from './time'
-
+import {url} from "./BaseUrl"
 
 const OffreCardsLeft = forwardRef(({ title, company, addresse, date , candidats }, ref) => {
   
     const [dateNow, setDate] = useState(date)
-
+     
     useEffect(() => {
       
         var timeStampDiffInSeconds = null;
@@ -46,20 +46,14 @@ const OffreCardsLeft = forwardRef(({ title, company, addresse, date , candidats 
                 console.log(dateNow)
               
         }
-        
-       
-
-        
-        
-            
-           
+                
    ,[])
     return (
 
         <div  className="offre">
 
            <div className="offre__header">
-                <img style={{width:'50px' , height:'50px'}} src={logo} alt='hamma'></img>
+                <img style={{width:'50px' , height:'50px'}} src={`${url}images/${company}.png`} alt="company"></img>
                 <div className="offre__info">
                     <h3>{title}</h3>
                     <p >{company}</p>

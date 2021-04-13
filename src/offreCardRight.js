@@ -72,7 +72,7 @@ const offreCardRight = forwardRef(({ title, company, addresse, date , descriptio
            <div style={{borderBottom:'1px solid rgba(0,0,0,0.08)'}} className="offre_card">
 
            <div className="offre_card_header">
-     <img style={{width:'120px' , height:'120px'}} src={logo} alt='hamma'></img>
+     <img style={{width:'120px' , height:'120px'}} src={`${url}images/${company}.png`} alt='hamma'></img>
      <div className="offre_card_info">
          <h2>{title}</h2>
          <p onClick={()=>Navigate(company)} >{company}</p>

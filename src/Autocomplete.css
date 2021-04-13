@@ -1,0 +1,32 @@
+.AutocompletePlace {
+    position: relative;
+  }
+  
+  .AutocompletePlace-results {
+    position: absolute;
+    background-color: white;
+    padding: 0;
+    margin-top: -17px;
+    border: 1px solid #00000011;
+  }
+  .AutocompletePlace-input{
+    width: 98%;
+    height: 30px;
+    font-size: 15px;
+    font-weight: 500;
+    padding-left: 10px;
+    margin-bottom: 17px;
+    border-radius: 3px;
+    border: 1px solid black;
+    outline-color: #eb0392;
+  }
+  .AutocompletePlace-items {
+    list-style: none;
+    border: 1px solid #00000011;
+    cursor: pointer;
+    padding: 10px 10px;
+  }
+  
+  .AutocompletePlace-items:hover {
+    background-color: #0000FF11;
+  }

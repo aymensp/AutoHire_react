@@ -24,7 +24,6 @@ const saveInfo = ()=>{
       }).then( res => {
           console.log(res.data);
           window.location.reload()
-     
      })
      .catch(error => {
          console.log(error);
@@ -48,18 +47,13 @@ const onFileUpload = (event) => {
     // Details of the uploaded file
    // Request made to the backend api
     // Send formData object
-    axios.post(`http://localhost:3002/parseCV`, formData )
+    axios.post(`http://localhost:3000/parseCV`, formData )
     .then(res=>{
-        console.log(res.data)
-        axios.get(`http://localhost:3002/user/Info/${currentUser.username}`)
-        .then(response=> {
-            setSkills(response.data.skills)
-            setExperience(response.data.experience)
-            setEducation(response.data.education)
-        })
-        .catch(error=>{
-            console.log(error)
-        })
+        console.log(res.data.experience)
+        setEducation(res.data.education);
+        setExperience(res.data.experience);
+        setSkills(res.data.skills);
+        
 })
     .catch(error=>{
         console.log(error);

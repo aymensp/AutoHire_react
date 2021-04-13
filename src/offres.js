@@ -45,13 +45,9 @@ function Offres() {
 
 let tabs = <Spinner/>
            
-           
-           
 if (posts.length!=0)
 {
-
-tabs =  <Tabs>
-            
+tabs =  <Tabs>           
 <TabNav>
   
  <header style={{borderBottom:'1px solid rgba(0,0,0,0.08)',position:'sticky', zIndex:'1'}}>
@@ -59,13 +55,13 @@ tabs =  <Tabs>
     <h1 style={{fontSize:'18px',fontWeight:'400',lineHeight:'1.5'}}>Jobs based on your Profile</h1>
    </div>
  </header>
-   {posts.map(({ id,  titre, industry, address ,createdAt   }) => (
+   {posts.map(({ id,  titre, company, address ,createdAt   }) => (
      <TabNavItem key={id}> 
       <FlipMove>
          <OffreCardsLeft
        key={id}
        title={titre}
-       company={industry}
+       company={company}
        addresse ={address}
        date ={createdAt}
        />
@@ -80,13 +76,13 @@ tabs =  <Tabs>
 
 <TabContent >
 <div></div>
-   {posts.map(({ id,  titre, industry, address ,createdAt,description , salary , poste , jobTime , type,link   }) => (
+   {posts.map(({ id,  titre, industry,company, address ,createdAt,description , salary , poste , jobTime , type,link   }) => (
      <TabPanel key={id}>
        <FlipMove>
          <OffreCardRight
        key={id}
        title={titre}
-       company={industry}
+       company={company}
        addresse ={address}
        date ={createdAt}
        description={description} 
@@ -133,10 +129,7 @@ tabs =  <Tabs>
        </div>
       
          {tabs}
-        
-         
-         
-      </div>
+     </div>
          
      
     )

@@ -5,6 +5,8 @@ import './PostJob.css';
 import {url} from './BaseUrl';
 import axios from 'axios';
 import { useHistory } from 'react-router';
+import AutocompletePlace from './AutocompletePlace';
+
 function PostJob () {
     const [title, setTitle] = useState('');
     const [company, setCompany] = useState('');
@@ -21,7 +23,7 @@ function PostJob () {
     description: description,
     poste: position,
     address: location,
-    creator: "aymlan",
+    creator: "admin",
     industry: company,
     company : company,
     type: type,
@@ -57,7 +59,7 @@ return (
                 <label for="firstname">Job Salary</label>
                 <input value={salary} onChange={e => setSalary(e.target.value)} placeholder="Job Salary" type="text"/>
                 <label for="firstname">Job Position</label>
-                <input value={position} onChange={e => setPosition(e.target.value)} placeholder="Job Position" type="text"/>
+                <AutocompletePlace onSelect={place => console.log(place)} />
                 <label for="firstname">Employement Type</label>
                 <select value={type} onChange={e => setType(e.target.value)} placeholder="Choose one..." type="text">
                     <option>Choose one..</option>

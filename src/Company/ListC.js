@@ -24,25 +24,21 @@ function List() {
   let history = useHistory();
   let location = useLocation();
 
-    const [posts, setPosts] = useState([])
+    const [company , setCompany] =useState("");
     const [posts2, setPosts2] = useState([])
     let idCompany="603e62487d085e0b3454cbb2"
+    const query = new URLSearchParams(location.search);
+    const industry= query.get('industry');
       useEffect(() => {
-        const query = new URLSearchParams(location.search);
-       const industry= query.get('industry');
-        axios.get(`${url}entreprise/n/${industry}`).then( res => {
+       
+       axios.get(`${url}entreprise/n/${industry}`).then( res => {
            console.log(res.data.nom)
            setPosts2(res.data)
           })   
         }
-            
-           
-   ,[])
- 
-   
-  let idComp
-   
-
+  ,[])
+ let idComp
+  
   const Navigate =(industry)=>{
     history.push({pathname:'/company',
      search:  'industry'+'='+industry
@@ -63,7 +59,7 @@ return(
 <br></br>
 <div>     
 </div>
-     <img style={{width:'120px' , height:'120px'}} src={logo} alt='hamma'></img>
+     <img style={{width:'120px' , height:'120px'}} src={`${url}images/${industry}.png`} alt='hamma'></img>
      <div className="company_card_info">
      {posts2.map(
         ({nom,industry,about ,adresse}) =>

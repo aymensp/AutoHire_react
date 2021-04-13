@@ -1,41 +1,65 @@
-.Modal {
+.Update {
     position: fixed;
     z-index: 203;
     background-color: white;
-    width: 800px;
-    height: fit-content;
-    max-height: 450px;
+    width: 700px;
+    height: 550px;
+    max-height: 550px;
     border: 1px solid #ccc;
     border-radius: 10px;
     box-shadow: 1px 1px 1px black;
-    padding: 16px;
-    left: 20%;
-   display: grid;
-    align-items: center !important;
+    left: 26%;
+    display: grid;
     top: 20%;
-    box-sizing: border-box;
-    overflow: scroll;
+    overflow-y: scroll;
     transition: all 0.3s ease-out;
 }
-.Modal > label {
-    color: gray;
-}
-.Modal > textarea {
+.update__image{
+  color: #eb0392;
+  background-color: white;
+  height: 30px !important;
+  width: 30px !important;
+  cursor: pointer;
+  box-shadow: 0 2px 3px rgb(0 0 0 / 20%);
+  display: flex;
+  border-radius: 80px;
+  align-items: center;
+  position: absolute;
+  left: 20%;
+  top:37%
+  
+  }
+  .pencil__icon_image{
+    height: 25px !important;
+    width: 20px !important;
+    margin-left: 5px;
+  }
 
-border-radius: 5px;
-max-height: 200px;
-box-shadow: inset 0 0 0 1px var(--color-border);
-box-sizing: border-box;
-transition: all 83ms ease;
-height: auto;
-overflow: scroll;
-font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
+.img {
+
+    width:700px;
+    height: 160px;
+    
+  
+  }
+.label {
+    color: gray;
+    font-weight: 500;
+    font-size: 15px;
+    line-height: 1.7;
 }
-.Modal > textarea:hover {
-    box-shadow: inset 0 0 0 2px var(--color-border);  
+.input {
+    width: 99%;
+    height: 30px;
+    font-size: 15px;
+    font-weight: 500;
+    margin-bottom: 17px;
+    border-radius: 3px;
+    border: 1px solid black;
+    outline-color: #eb0392;
 }
+
+
   .but{
     background: #eb0392 none repeat scroll 0 0;
     border-color: #eb0392;

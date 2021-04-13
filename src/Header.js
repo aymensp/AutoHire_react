@@ -13,7 +13,7 @@ import AssignmentIcon from '@material-ui/icons/Assignment';
 import { useHistory } from 'react-router'
 import Menu from '@material-ui/core/Menu';
 import MenuItem from '@material-ui/core/MenuItem';
-
+import {url } from './BaseUrl';
 function Header() {
     const user = localStorage.getItem('user')
     const currentUser = JSON.parse(user);
@@ -50,7 +50,7 @@ function Header() {
 
            {currentUser.role!='ADMIN' ?
                 <div className="header__right">
- <HeaderOption Icon={HomeIcon} title="Home" onClick={()=>navigate('/')}/>
+                <HeaderOption Icon={HomeIcon} title="Home" onClick={()=>navigate('/')}/>
                 <HeaderOption Icon={SupervisorAccountIcon} title="My Network"/>
                 <HeaderOption Icon={BusinessCenterIcon} title="Jobs" onClick={()=>navigate('jobs')}/>
                 <HeaderOption Icon={ChatIcon} title="Messaging"/>
@@ -65,16 +65,14 @@ function Header() {
                
                 open={Boolean(anchorEl)}
                 onClose={handleClose}
-            >   
+                >   
                 <div onClick={()=>navigate('profile')}  style={{width:'240px',borderBottom:'1px solid lightgray'}}>
                 <div style={{display:'flex',padding:'9px' ,cursor:'pointer', maxWidth:'220px'}}>
-                
-                <Avatar  >{currentUser?.username[0]}</Avatar>
+                <Avatar src={`${url}images/${currentUser.username}.jpeg`}  >{currentUser?.username[0]}</Avatar>
                 <div style={{marginLeft:'10px'}}>
                     <h3 style={{lineHeight:'1.3',fontWeight:'bold'}}>{currentUser.username}</h3>  
                     <p>hamma eddine el hammewi</p>
                 </div>
-                
                 </div>
                 <button onClick={()=>navigate('profile')}  style={{cursor:'pointer',fontWeight:'bold',fontSize:'15px',width:'90%',color:'#eb0392',backgroundColor:'white',padding:'5px', margin:'10px' , borderRadius:'15px' ,border:'none',boxShadow:'inset 0 0 0 1px #eb0392'}}>View Profile</button>
                 </div>
@@ -87,7 +85,7 @@ function Header() {
             
             </div> :
               <div className="header__right">
-   <HeaderOption Icon={SupervisorAccountIcon} title="My Network"/>
+              <HeaderOption Icon={SupervisorAccountIcon} title="My Network"/>
               <HeaderOption Icon={BusinessCenterIcon} title="Jobs" onClick={()=>navigate('jobsSettings')}/>
               <HeaderOption Icon={ChatIcon} title="Messaging"/>
               <HeaderOption Icon={NotificationsIcon} title="Notifications"/>
@@ -95,7 +93,6 @@ function Header() {
               onClick={(handleClick)}
               />
                <Menu
-                
                 id="simple-menu"
                 anchorEl={anchorEl}
                
@@ -105,8 +102,8 @@ function Header() {
                 <div onClick={()=>navigate('profile') }style={{width:'240px',borderBottom:'1px solid lightgray'}}>
                 <div style={{display:'flex',padding:'9px' ,cursor:'pointer', maxWidth:'220px'}}>
                 
-                <Avatar  >{currentUser?.username[0]}</Avatar>
-                <div style={{marginLeft:'10px'}}>
+                <Avatar src={`${url}images/${currentUser.username}.jpeg`}    >{currentUser?.username[0]}</Avatar>
+                <div onClick={()=>navigate('profile') } style={{marginLeft:'10px'}}>
                     <h3 style={{lineHeight:'1.3',fontWeight:'bold'}}>{currentUser.username}</h3>  
                     <p>hamma eddine el hammewi</p>
                 </div>
