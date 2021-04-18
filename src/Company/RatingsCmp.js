@@ -16,10 +16,13 @@ import {FaStar} from "react-icons/fa";
 const RatingCmp = forwardRef((props) => {
     const [posts, setPosts] = useState([])
    // const idCompany = localStorage.getItem('cmp')
-const {idCompany} = props.match.params;
+   let nomCmp=props.location.pathname.split('/')[2];
+   const userr = localStorage.getItem('user')
+   const currentUser = JSON.parse(userr);
+
    useEffect(() => {
       
-    axios.get(`${url}avis/e/Wevioo`).then( res => {
+    axios.get(`${url}avis/e/${nomCmp}`).then( res => {
         console.log(res.data)
         setPosts(res.data)
        }) 
@@ -61,8 +64,8 @@ const RateFn = (e) => {
     axios.post(`${url}avis/newAvis`, {
         niveau: rating,
           commentaire: comment,
-          entreprise: "Wevioo",
-          personne: "Ayman"
+          entreprise: nomCmp,
+          personne: currentUser.username
       })
       .then( (response)=>{
         setComment("")
@@ -176,7 +179,7 @@ trigger={buttonPopup} setTrigger = {setButtonPopup}>
 <h2>                         
 <img className='imgCircleComment' src={logo} ></img> &nbsp;&nbsp;
 
-Rania </h2>
+{personne} </h2>
 
 
 <div className='starsComment'>

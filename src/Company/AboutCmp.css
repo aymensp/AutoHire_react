@@ -1,0 +1,132 @@
+body {
+    font-family: "Montserrat";
+    text-align: justify;
+    max-width: 600px;
+    margin: 0 auto;
+    background-color: rgb(18, 23, 27);
+    color: aliceblue;
+  }
+  .text {
+    font-size: 24px;
+  }
+  .moreText {
+    display: none;
+  }
+  .read-more-btn {
+    padding: 15px 60px;
+    background-color: rgb(149, 170, 197);
+    color: rgb(53, 49, 49);
+    border: none;
+    outline: none;
+    font-size: 20px;
+    cursor: pointer;
+  }
+  .text.show-more .moreText {
+    display: inline;
+  }
+  .text.show-more .dots {
+    display: none;
+  }
+  
+  /* ********************* */
+  /* This Code is for only the floating card in right bottom corner */
+  /* ********************** */
+  
+  * {
+    box-sizing: border-box;
+  }
+  body {
+    overflow-x: hidden;
+  }
+  .float-text {
+    display: inline-block;
+    position: fixed;
+    right: 10px;
+    bottom: 10px;
+    width: fit-content;
+    background-color: #192227;
+    color: whitesmoke;
+    font-family: "Montserrat";
+    text-transform: capitalize;
+    font-size: 15px;
+    padding: 10px 20px;
+    border-radius: 4px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.226);
+    cursor: pointer;
+    border: 1px solid white;
+  }
+  .float-card-info {
+    width: 300px;
+    position: fixed;
+    background-color: #263238;
+    border: 2px solid white;
+    overflow: hidden;
+    bottom: 5px;
+    right: -100%;
+    padding: 30px;
+    border-radius: 8px;
+    transition: 0.5s ease-in-out right;
+  }
+  .float-card-info p {
+    color: white;
+    font-size: 20px;
+    font-family: "Montserrat";
+    text-transform: capitalize;
+    width: 100%;
+    font-weight: 500;
+    text-align: center;
+    margin-bottom: 20px;
+  }
+  .gg-youtube {
+    --ggs: 1.5;
+  }
+  .float-card-info .icons {
+    width: 120px;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-direction: row;
+    margin-bottom: 20px;
+  }
+  .float-card-info .icons a {
+    display: inline-block;
+    cursor: pointer;
+    color: whitesmoke;
+  }
+  .float-card-info .icons a:hover {
+    color: rgb(127, 127, 129);
+  }
+  .float-card-info .link {
+    width: 100%;
+    display: block;
+    text-decoration: none;
+    color: whitesmoke;
+    font-family: "Montserrat";
+    font-size: 14px;
+    text-align: center;
+    margin-top: 5px;
+  }
+  .gg-close-r {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    cursor: pointer;
+  }
+  .float-card-info.active {
+    right: 5px;
+    bottom: 5px;
+  }
+  
+  .float-card-info .hire {
+    background-color: #181e22;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    font-size: 18px;
+    border-radius: 6px;
+    width: fit-content;
+    margin: 0 auto;
+    padding: 10px 20px;
+    margin-top: 20px;
+  }
+  

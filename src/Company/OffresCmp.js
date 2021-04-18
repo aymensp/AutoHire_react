@@ -8,13 +8,14 @@ import logo from '../assets/offre.jpeg'
 
 import { useHistory } from 'react-router';
 
-function OffresCmp() {
+function OffresCmp(props) {
     const [posts, setPosts] = useState([])
     let history=useHistory();
+    let nomCmp=props.location.pathname.split('/')[2];
 
     useEffect(() => {
       
-        axios.get(`${url}offre/e/Wevioo`).then( res => {
+        axios.get(`${url}offre/e/${nomCmp}`).then( res => {
            console.log(res.data)
            setPosts(res.data)
            console.log(res.data.description)
@@ -30,9 +31,9 @@ return(
 
  <div>
      <br></br>
-    <div className='list' >
+    <div  >
           <br></br>
-        <ul>
+        <ul  style={{listStyle:'none'}}>
         {posts.map(({ id,  titre, industry, address ,createdAt   }) => (
               <li key={id}> 
                <FlipMove>

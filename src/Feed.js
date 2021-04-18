@@ -10,12 +10,14 @@ import FlipMove from 'react-flip-move'
 import { configureStore } from '@reduxjs/toolkit'
 import {url} from './BaseUrl'
 import axios from 'axios' ;
+import { useHistory } from 'react-router'
 
 function Feed() {
     const user = useSelector(selectUser)
     const [input, setInput] = useState('');
     const [posts, setPosts] = useState([])
-    
+    let history = useHistory()
+
     useEffect(() => {
         
         axios.get(`${url}offre/All/Offre`).then( res => {
@@ -26,7 +28,12 @@ function Feed() {
             
            
    ,[])
-    
+   const Navigate =(industry)=>{
+    history.push({pathname:'/company',
+     search:  'industry'+'='+industry,
+     state: { industry}
+     });
+       }
     const sendPost = e => {
         e.preventDefault();
         
@@ -62,13 +69,17 @@ function Feed() {
              
             <FlipMove key="hamm">
             {posts.map(({ id,  titre, industry, description  }) => (
+                              <p  onClick={()=>Navigate(industry)} >    {industry}
+
+
                 <Post 
                 key={id}
                 name={titre}
-                description={industry}
+               description={industry}
                 message={description}
                 photoUrl={industry}
-                />
+              
+                />  </p>
             ))}
             </FlipMove>
         </div>

@@ -23,13 +23,14 @@ const useStyles = makeStyles({
       paddingRight: "40px"
     }
   });
-const Employee = forwardRef(({idC, nom, industry ,about }) => {
+const Employee = forwardRef((props,ref) => {
     const [posts, setPosts] = useState([])
-   
+    let nomCmp=props.location.pathname.split('/')[2];
+
     const [buttonPopup,setButtonPopup] = useState(false);
     useEffect(() => {
       
-        axios.get(`${url}user/e/Wevioo`).then( res => {
+        axios.get(`${url}user/e/${nomCmp}`).then( res => {
             console.log(res.data)
             setPosts(res.data)
            }) 

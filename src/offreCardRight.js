@@ -113,7 +113,6 @@ const offreCardRight = forwardRef(({ title, company, addresse, date , descriptio
 </div>
 <div className ='offre_box'>
     <h3> Industry</h3>
-    <p> Information Technology & Services</p>
 </div>
 <div className ='offre_box'>
     <h3> Job Functions</h3>

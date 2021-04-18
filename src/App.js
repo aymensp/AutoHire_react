@@ -9,8 +9,9 @@ import PostedJob from './PostedJob';
 import PostJob from './PostJob';
 import MyJobs from './MyJobs';
 import Company from './Company/ListC';
-import Test from './Test/Test';
+import Test from './Test/test2';
 import EmployeeRH from './Company/EmployeeRH';
+import Chat from './chat';
 
 const PrivateRoute = ({ component: Component, roles, ...rest }) => (
   <Route {...rest} render={props => {
@@ -33,7 +34,10 @@ const PrivateRoute = ({ component: Component, roles, ...rest }) => (
   const user = localStorage.getItem('user')
   let history = useHistory()
  return (
+   
     <div >
+    <Chat />
+
      <Switch history={history}>
      <Route exact path ="/login"  component={Login}/>
      <PrivateRoute exact path="/"  component={Acceuil}/>
@@ -43,10 +47,12 @@ const PrivateRoute = ({ component: Component, roles, ...rest }) => (
      <PrivateRoute exact path="/myJobs"  component={MyJobs}/>
      <PrivateRoute exact path="/postJob" roles='ADMIN' component={PostJob}/>
      <PrivateRoute path="/company" roles='test' component={Company} />
-     <PrivateRoute path="/test"  roles='ADMIN'  component={Test} />
+     <PrivateRoute path="/test"   component={Test} />
+
      <PrivateRoute exact path="/emp" roles='ADMIN' component={EmployeeRH}/>
      </Switch> 
    </div>
+   
   );
 }
 export default withRouter(App);

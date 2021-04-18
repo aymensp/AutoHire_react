@@ -26,7 +26,8 @@ function RatingPopup(props)
     const [hover6,setHover6] =useState(null);
 
     const [comment, setComment] = useState('');
-    let s ;
+    const userr = localStorage.getItem('user')
+    const currentUser = JSON.parse(userr);
     const RateFn = (e) => {
         e.preventDefault();
         axios.post(`${url}evaluation/newEvaluation`, {
@@ -38,7 +39,7 @@ function RatingPopup(props)
           amelioration: rating6,
           commentaire: comment,
           entreprise: "Wevioo",
-          employee: "Ayman"
+          employee: currentUser
           })
           .then( (response)=>{
              

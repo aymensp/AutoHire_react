@@ -1,0 +1,36 @@
+{
+  "data": [
+    {
+      "question": "what do   ?",
+      "choices": ["perfect", "good", "bad", "cool"],
+      "answer": "perfect"
+    },
+    {
+      "question": "What do you think ?",
+      "choices": ["dev", "god of dev", "bad at  dev", "good"],
+      "answer": "god of dev"
+    },
+    {
+      "question": "is it worth it?",
+      "choices": ["yes so much", "no", "maybe", "idk"],
+      "answer": "yes so much"
+    },
+    {
+      "question": "What is hs  dream ?",
+      "choices": ["become rich", "become boss", "both ", "idk"],
+      "answer": "become rich"
+    },
+    
+    {
+      "question": "What is the best color ?",
+      "choices": ["black", "white", "yellow", "green"],
+      "answer": "black"
+    },
+ 
+    {
+      "question": "When will he realize his dream ?",
+      "choices": ["he's not interested", "asap", "he doesn't want to", "idk"],
+      "answer": "asap"
+    }
+  ]
+}

@@ -10,7 +10,8 @@ import axios from 'axios';
 function RatingPopup(props)
 {
     const user = useSelector(selectUser)
-
+    const userr = localStorage.getItem('user')
+    const currentUser = JSON.parse(userr);
     const [rating ,setRating] = useState(null);
     const [hover,setHover] =useState(null);
     const [comment, setComment] = useState('');
@@ -20,7 +21,7 @@ function RatingPopup(props)
             niveau: rating,
               commentaire: comment,
               entreprise: "ho",
-              personne: "hii"
+              personne: currentUser
           })
           .then( (response)=>{
             props.setTrigger(false)
