@@ -18,8 +18,8 @@ function Login() {
             password: password
           })
           .then((response) => {
-          localStorage.setItem('user',JSON.stringify(response.data)) 
-          history.push('/')     
+          localStorage.setItem('user',JSON.stringify(response.data))
+          history.push('/')
         }, (error) => {
             console.log(error);
         });
@@ -27,13 +27,13 @@ function Login() {
    return (
         <div style={{backgroundColor:'white'}} className="login">
             <img src={logo} alt=""/>
-            
+
             <form>
                 <input value={name} onChange={e => setName(e.target.value)} placeholder="Usename" type="text"/>
                 <input value={password} onChange={e => setPassword(e.target.value)} placeholder="Password" type="password"/>
                 <button type="submit" onClick={loginToApp}>Sign In</button>
             </form>
-           
+
         </div>
     )
 }
