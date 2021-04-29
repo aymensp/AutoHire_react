@@ -19,7 +19,9 @@ function Header() {
     const currentUser = JSON.parse(user);
     let history = useHistory()
     const [anchorEl, setAnchorEl] = React.useState(null);
-
+    const Capitalize =(str) =>{
+        return str.charAt(0).toUpperCase() + str.slice(1);
+        }
     //open menu
     const handleClick = (event) => {
       setAnchorEl(event.currentTarget);
@@ -70,8 +72,8 @@ function Header() {
                 <div style={{display:'flex',padding:'9px' ,cursor:'pointer', maxWidth:'220px'}}>
                 <Avatar src={`${url}images/${currentUser.username}.jpeg`}  >{currentUser?.username[0]}</Avatar>
                 <div style={{marginLeft:'10px'}}>
-                    <h3 style={{lineHeight:'1.3',fontWeight:'bold'}}>{currentUser.username}</h3>  
-                    <p>hamma eddine el hammewi</p>
+                    <h3 style={{lineHeight:'1.3',fontWeight:'bold'}}>{Capitalize(currentUser.firstName) +"  "+ Capitalize(currentUser.lastName)}</h3>  
+                    <p>{Capitalize(currentUser.position) +" at "+ Capitalize(currentUser.entreprise)}</p>
                 </div>
                 </div>
                 <button onClick={()=>navigate('profile')}  style={{cursor:'pointer',fontWeight:'bold',fontSize:'15px',width:'90%',color:'#eb0392',backgroundColor:'white',padding:'5px', margin:'10px' , borderRadius:'15px' ,border:'none',boxShadow:'inset 0 0 0 1px #eb0392'}}>View Profile</button>
@@ -104,8 +106,8 @@ function Header() {
                 
                 <Avatar src={`${url}images/${currentUser.username}.jpeg`}    >{currentUser?.username[0]}</Avatar>
                 <div onClick={()=>navigate('profile') } style={{marginLeft:'10px'}}>
-                    <h3 style={{lineHeight:'1.3',fontWeight:'bold'}}>{currentUser.username}</h3>  
-                    <p>hamma eddine el hammewi</p>
+                    <h3 style={{lineHeight:'1.3',fontWeight:'bold'}}>{Capitalize(currentUser.firstName) +" "+ Capitalize(currentUser.lastName)}</h3>  
+                    <p>{Capitalize(currentUser.position) +" at "+ Capitalize(currentUser.entreprise)}</p>
                 </div>
                 
                 </div>

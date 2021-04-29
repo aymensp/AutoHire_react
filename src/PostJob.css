@@ -52,6 +52,17 @@ padding: 32px 0 96px;
    color: #eb0392;
    margin-left: 3px;
   }
+  .p {
+    color: #bf1650;
+    margin-top: -10px;
+    margin-bottom: 10px;
+    font-weight: 700;
+  }
+  
+  .p::before {
+    display: inline;
+    content: "⚠ ";
+  }
   .form > form > input {
     width: 96%;
     height: 40px;

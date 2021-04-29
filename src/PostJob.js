@@ -6,62 +6,114 @@ import {url} from './BaseUrl';
 import axios from 'axios';
 import { useHistory } from 'react-router';
 import AutocompletePlace from './AutocompletePlace';
+import ReactDOM from "react-dom";
+import { useForm } from "react-hook-form";
+const sleep = (ms) => new Promise((resolve) => setTimeout(resolve, ms));
 
 function PostJob () {
-    const [title, setTitle] = useState('');
-    const [company, setCompany] = useState('');
+    const userr = localStorage.getItem('user')
+    const currentUser = JSON.parse(userr); 
     const [location, setLocation] = useState('');
-    const [salary, setSalary] = useState('');
-    const [type, setType] = useState('');
-    const [description, setDescription] = useState('');
-    const [position, setPosition] = useState('');
     let history = useHistory()
-    const PostJob = (e) => {
-        e.preventDefault();
-        axios.post(`${url}offre/Newoffre`, {
-    titre: title,
-    description: description,
-    poste: position,
-    address: location,
-    creator: "admin",
-    industry: company,
-    company : company,
-    type: type,
-    jobTime: type,
-    salary: salary,
-    longitude:"3.613140",
-    latitude:"36.400512"
-          })
-          .then((response) => {
-        history.push('/jobsSettings')
-     
-        }, (error) => {
-            console.log(error);
-          });
-         
-    } 
+    const {
+      register,
+      handleSubmit,
+      formState: { errors }
+    } = useForm();
+    
+    const onSubmit = (data) => {
+      const hamma = {...data,
+      titre:data.title,  
+      creator: currentUser.username,
+      industry: currentUser.entreprise,
+      company : currentUser.entreprise,
+      jobTime: data.type,
+      address:location.place_name,
+      longitude:location.geometry.coordinates[0],
+      latitude:location.geometry.coordinates[1]}
+      axios.post(`${url}offre/Newoffre`, 
+      hamma)
+            .then((response) => {
+              console.log(response)
+          history.push('/jobsSettings')
+          }, (error) => {
+              console.log(error);
+            });
+    };
+   
+   
+    console.log(location);
+   
+       
+
 return (
-    <div >
+     <div >
      <Header />
      <div className="PostJob">
      <div className='headerr'>
        <h1>Find a great hire, fast</h1>
        <h2> Rated #1 in delivering quality hires</h2>  
-    </div>    
-     <div className="form">
-           <form>
-                <label for="firstname" >Job Title</label>
-                <input value={title} onChange={e => setTitle(e.target.value)} placeholder="Job Title" type="text"/>
-                <label for="firstname">Company</label>
-                <input value={company} onChange={e => setCompany(e.target.value)} placeholder="Company" type="text"/>
-                <label for="firstname">Job Location</label>
-                <input value={location} onChange={e => setLocation(e.target.value)} placeholder="Job Location" type="text"/>
-                <label for="firstname">Job Salary</label>
-                <input value={salary} onChange={e => setSalary(e.target.value)} placeholder="Job Salary" type="text"/>
-                <label for="firstname">Job Position</label>
-                <AutocompletePlace onSelect={place => console.log(place)} />
-                <label for="firstname">Employement Type</label>
-                <select value={type} onChange={e => setType(e.target.value)} placeholder="Choose one..." type="text">
+     </div>    
+     <div className="form" >
+           <form onSubmit={handleSubmit(onSubmit)}>
+
+
+                <label for="title" >Job Title</label>
+                <input  placeholder="Job Title" type="text" 
+                {...register("title", {
+                  validate: (value) => 
+                    value.length !==0       
+        })}
+         />
+        {errors.title && <p className='p'>Please fill out this field</p>}
+
+
+                <label for="location">Job Location</label>
+                <AutocompletePlace  {...register("location", {
+          validate: () => location.length !==0
+          
+        })} onSelect={(place)=>setLocation(place)}  />
+           {errors.location && <p className='p'> Please select a location from the suggestions</p>}
+
+
+                <label for="salary">Job Salary</label>
+                <input   placeholder="Job Salary" type="text"
+                 {...register("salary", {
+          validate: {
+            notEmpty:(value) => value.length!==0,
+            positiveNumber: (value) => parseFloat(value) > 0,
+          
+          }
+        })} />
+{errors.salary && errors.salary.type === "positiveNumber" && (
+        <p className='p'>Slary should be greater than 0</p>
+      )}
+     
+       {errors.salary && errors.salary.type === "notEmpty" && (
+        <p className='p'>Please fill out this field</p>
+      )}
+
+
+
+                <label for="position">Job Position</label>
+                <input placeholder="Job Position" type="text" 
+                     {...register("position", {
+                      validate: (value) => value.length !==0
+                    })} />
+  {errors.position  && (
+        <p className='p'>Please fill out this field</p>
+      )}
+
+
+                <label for="type">Employement Type</label>
+                <select 
+              
+                    
+                     placeholder="Choose one..." type="text"
+                     {...register("type", {
+                      validate: (value) => value !=="Choose one.."
+                    })} 
+                     >
                     <option>Choose one..</option>
                     <option value='Contract'>Contract</option>
                     <option value='Full-Time'>Full-Time</option>
@@ -70,16 +122,28 @@ return (
                     <option value='Intership'>Intership</option>
                     <option value='Volunteer'>Volunteer</option>
                 </select>
-                <label for="firstname">Job Description</label>
-                <textarea onChange={(event)=> setDescription(event.target.value)} placeholder="Job Description" type="text" id="text" defaultValue={description} value={description} />
-                <button type="submit" onClick={PostJob}>Post job for free</button>
-            </form>
-           
-        </div>  
-    </div>
-    </div>
-)
+                {errors.type  && (
+        <p className='p'>Please select an item in the list.</p>
+      )}
 
+
+                <label for="description">Job Description</label>
+                <textarea placeholder="Job Description" type="text" id="text" 
+                {...register("description", {
+                  validate: (value) => value.length!==0
+                })}
+                    />
+  {errors.description  && (
+        <p className='p'>Please select an item in the list.</p>
+      )}
+
+
+                <button type="submit" > Post job for free</button>
+            </form>
+     </div>  
+     </div>
+     </div>
+)
 }
 
 export default PostJob

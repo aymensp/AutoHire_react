@@ -37,7 +37,7 @@ return(
    <div className='list'>
        {posts ?
   <ul>
-  {posts.map(({ id,  titre, industry, address  }) => (
+  {posts.map(({ id,  titre, company, address  }) => (
         <li key={id}> 
          <FlipMove>
          <div style={{ }}  className="offre">
@@ -46,7 +46,7 @@ return(
 <img style={{width:'50px' , height:'50px',paddingTop:'10px'}} src={logo} alt='hamma'></img>
 <div style={{borderBottom:'1px solid rgb(219, 214, 214) ', width:'100%',padding:'10px'}} className="offre__info">
    <h4 style={{color:'black' , lineHeight:'1.5'}}>{titre}</h4>
-   <p style={{color:'black'}}>{industry}</p>
+   <p style={{color:'black'}}>{company}</p>
    <p >{address}</p>
    <div style={{   display: 'flex' , marginTop:'2px'}}>
    <p style={{ color : 'rgba(0,0,0,0.6)' , fontSize:'13px' }}> 14 candidats</p>

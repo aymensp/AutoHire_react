@@ -4,12 +4,16 @@ import './offresCardLeft.css'
 import  timeago from './time'
 import {url} from "./BaseUrl"
 
-const OffreCardsLeft = forwardRef(({ title, company, addresse, date , candidats }, ref) => {
+const OffreCardsLeft = forwardRef(({ title, company, addresse, date ,users, link }) => {
   
     const [dateNow, setDate] = useState(date)
-     
+    const [candiates, setCandidates] = useState(0)
     useEffect(() => {
-      
+        const candidats = 0;  
+        if(users){
+            users.map(()=>{setCandidates(candidats+1)})
+        }
+     
         var timeStampDiffInSeconds = null;
     
         
@@ -43,7 +47,7 @@ const OffreCardsLeft = forwardRef(({ title, company, addresse, date , candidats 
              else if ( timeStampDiffInSeconds>=60*60*24*30 && timeStampDiffInSeconds<60*60*24*30*365)
                  // between 30 days to 365 days
                 { setDate(""+parseInt(timeStampDiffInSeconds/(60*60*24*30)) + "months ago")  ;}
-                console.log(dateNow)
+                
               
         }
                 
@@ -53,7 +57,12 @@ const OffreCardsLeft = forwardRef(({ title, company, addresse, date , candidats 
         <div  className="offre">
 
            <div className="offre__header">
-                <img style={{width:'50px' , height:'50px'}} src={`${url}images/${company}.png`} alt="company"></img>
+                <img style={{width:'50px' , height:'50px'}} src={
+                    link?
+                    logo:
+                    `${url}images/${company}.png`
+                    
+                    } alt="company"></img>
                 <div className="offre__info">
                     <h3>{title}</h3>
                     <p >{company}</p>
@@ -62,7 +71,11 @@ const OffreCardsLeft = forwardRef(({ title, company, addresse, date , candidats 
                         <p style={{ color : 'rgba(0,0,0,0.6)' , fontSize:'12px' ,marginRight:'8px'}}>
                          {dateNow}
                         </p>
-                        <p style={{ color : '#eb0392' , fontSize:'13px' }}> 14 candidats</p>
+                        {candiates!==0?
+                            <p style={{ color : '#eb0392' , fontSize:'13px' }}> {candiates} candidats</p>
+                        :
+                        <p style={{ color : '#eb0392' , fontSize:'13px' }}> Be the first applicant</p>}
+
                     </div>
                 </div>
             </div>

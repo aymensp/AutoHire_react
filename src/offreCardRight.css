@@ -13,8 +13,31 @@ padding: 25px;
     margin-top: 10px;
 
   }
+  .pencil{
+    color: gray;
+    height: 40px !important;
+    width: 40px !important;
+    cursor: pointer;
+    margin-top: 10px;
+    display: flex;
+    border-radius: 80px;
+    align-items: center;
+    }
+   
+   
+    .pencil__icon{
+      height: 35px !important;
+      width: 30px !important;
+      margin-left: 5px;
+    }
+    .pencil:hover{
+      
+      background-color: rgb(242, 238, 238) !important;
+    }
   .offre_card_info {
    padding-left: 20px;
+   margin-right: 10px;
+   width: 320px;
    
   }
   .offre_card_info > h2 {
@@ -100,6 +123,12 @@ padding: 25px;
     font-weight: 400;
     
   }
+  .mapWrapper {
+    width: auto;
+    height: 500px;
+    border-radius: 30px;
+    padding: 10px;
+  }
   .offre_description_details{
 
     columns: auto 2;
@@ -119,5 +148,23 @@ padding: 25px;
     line-height: 1.4;
     font-weight: 400;
     margin-bottom: 12px;
+  }
+  .link{
+   display: flex;
+   align-items: center;
+  }
+  .link>a{
+    font-weight:700 ;
+    font-size:14px; 
+    text-decoration: none;
+    color: black;
+  }
+  .link>a:hover{
+   
+    color: #eb0392;
+  }
+  .link:hover{
+    text-decoration: underline;
+    color: #eb0392;
   }
   

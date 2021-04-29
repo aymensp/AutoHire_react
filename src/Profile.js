@@ -113,7 +113,7 @@ return(
                 <p style={{fontSize : "16px",  lineHeight: '1.5' , marginTop : '3px'}}> {Capitalize(currentUser.address)}</p>
                 </div>
                 <div  style={{display : 'flex',marginLeft:"20px"  ,height:'50px' }}>
-                <img style={{ height:'25px' , width: '25px' , marginRight :'10px' }} src={`${url}images/${currentUser.entreprise}.png`}/>
+                <img style={{ height:'30px' , width: '30px' , marginRight :'10px' }} src={`${url}images/${currentUser.entreprise}.png`}/>
                 <p className="p_position" onClick={()=>Navigate(currentUser.entreprise)}  > {Capitalize(currentUser.entreprise)} </p>
                 </div>
                 </div>
