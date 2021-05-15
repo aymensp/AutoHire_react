@@ -1,12 +1,10 @@
-import { Avatar, Button } from '@material-ui/core'
+
 import React ,{ forwardRef ,useDebugValue,useEffect,useState}  from 'react'
 import logo from '../assets/offre.jpeg'
 import Auxiliary from '../Auxiliary'
 import './company.css'
 import RatingPopup from './RatingPopup'
-import {BrowserRouter as Router,Route,Link,Switch} from "react-router-dom";
 
-import FlipMove from 'react-flip-move'
 import './companyCardRight.css'
 import '../Company/RatingPopup.css'
 import {url} from '../BaseUrl'
@@ -59,14 +57,19 @@ const [buttonPopup,setButtonPopup] = useState(false);
 const [rating ,setRating] = useState(null);
 const [hover,setHover] =useState(null);
 const [comment, setComment] = useState('');
+const [erreur, setErreur] = useState('');
 const RateFn = (e) => {
+ 
     e.preventDefault();
+    if((comment !=="")&&(rating>0))
+    {
     axios.post(`${url}avis/newAvis`, {
         niveau: rating,
           commentaire: comment,
           entreprise: nomCmp,
           personne: currentUser.username
       })
+    
       .then( (response)=>{
         setComment("")
       setRating(0)
@@ -76,6 +79,12 @@ const RateFn = (e) => {
       , (error) => {
         console.log(error);
       });
+    }
+
+else{
+  setErreur("Empty Comment or Stars !  ")
+}
+
 }
     return (
         
@@ -88,6 +97,7 @@ const RateFn = (e) => {
 <div className='absolute'> 
 <h3>Rate this Company!</h3>
 <form>
+  
                   <div>
                       {[... Array(5)].map((star,i)=>
                       {
@@ -106,8 +116,13 @@ const RateFn = (e) => {
                     </div>
                   
                     <input value={comment} onChange={e => setComment(e.target.value)}  type="text"/>
-      <button type="submit" style={{ color : 'white' , fontSize:'13px',lineHeight:'1.7' }} className="btnAvis" onClick={(e)=>RateFn(e)}>rate</button>
-
+               <br></br>  
+                <input value={erreur} onChange={e => setErreur(e.target.value)}  type="text" style ={{border:'none',color:'red'}}disabled/>
+                <br></br> <button type="submit" style={{ color : 'white' , fontSize:'13px',lineHeight:'1.7' }} className="btnAvis" onClick={
+   
+        
+        (e)=>RateFn(e)}>rate</button>
+<br></br>
 
                     </form>
        <RatingPopup
@@ -137,9 +152,9 @@ trigger={buttonPopup} setTrigger = {setButtonPopup}>
                          
                       })  }</h6>
   
-        
+  <h6 className='hide'> 
 
-  {avg = s/l ,compare()  }
+  {avg = s/l ,compare()  }</h6>
  
 
     

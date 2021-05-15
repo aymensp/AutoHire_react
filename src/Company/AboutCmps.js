@@ -3,9 +3,6 @@ import '../List.css'
 import {url} from '../BaseUrl'
 import axios from 'axios' ;
 
-import FlipMove from 'react-flip-move'
-import logo from '../assets/offre.jpeg'
-
 import { useHistory } from 'react-router';
 
 function OffresCmp(props) {
@@ -16,9 +13,9 @@ function OffresCmp(props) {
     useEffect(() => {
       
         axios.get(`${url}entreprise/n/${nomCmp}`).then( res => {
-           console.log(res.data)
+        
            setPosts(res.data)
-           console.log(res.data.description)
+         
           })   
         }
             

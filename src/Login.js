@@ -19,6 +19,7 @@ function Login() {
           })
           .then((response) => {
           localStorage.setItem('user',JSON.stringify(response.data)) 
+          console.log(response.data)
           history.push('/')     
         }, (error) => {
             console.log(error);

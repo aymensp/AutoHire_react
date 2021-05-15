@@ -13,7 +13,7 @@ import Auxiliary from './Auxiliary'
 import axios from 'axios';
 import Update from './updateProfile';
 import { useHistory } from 'react-router';
-
+import Widgets from './Company/Cwidget';
 function Profile() {
  const [purchasing ,setPurchasing] = useState(false);
  const [purchasing1 ,setPurchasing1] = useState(false);
@@ -89,7 +89,8 @@ const hamma = checkResume(user.resume);
 return(
 <div className="profile">
 
-<Header />     
+<Header />    
+
         <div className="profile__body">
             
             <div className="profile__content_top_left">
@@ -135,6 +136,7 @@ return(
                  projects. Tags: JavaScript, TypeScript, Angular, Android ,Redux, HTML5, CSS3, Bootstrap, JQuery, Sass, UI/UX Concepts, 
                  NodeJS, MySQL, MongoDB, REST APIs, ExpressJS, GraphQL, Git
                 </p>
+             
                 </div>
                {  hamma ? profileCards : 
                 <Auxiliary> 
@@ -148,8 +150,11 @@ onClick={()=>setPurchasing(true)}
               }
         </div>
         
-            <div style={{gridArea:'aside', height:'300px',backgroundColor:'black'}}></div>
+            <div style={{gridArea:'aside', height:'300px',backgroundColor:'black'}}>      </div>
+            <div style={{gridArea:'aside', height:'300px',backgroundColor:'white'}}>      <Widgets/></div>
         </div>
+       
+       
 </div>
 );
 }

@@ -7,14 +7,15 @@ import logo from '../assets/offre.jpeg'
 import Auxiliary from '../Auxiliary'
 import './company.css'
 import Header from "../Header"
-import Widgets from './Cwidget';
+
 import './companyCardRight.css'
 import './RatingPopup.css'
-import { FaKickstarter, FaStar } from "react-icons/fa";
+
 import './ListC.css'
 import { Link } from "react-router-dom";
-import RatingPopup from './RatingPopup'
-import Employee from './Emloyee';
+
+
+import Employee from './ListEmp';
 import Navbar from './Navbar';
 import { BrowserRouter as Router, Switch, Route, } from 'react-router-dom';
 import RatingCmp from './RatingsCmp';
@@ -152,6 +153,7 @@ let f="Wevioo"
 
                     <Route path='/offresCmp/' component={OffresCmp} />
                     <Route path='/employees/' component={Employee} />
+                  
 
                     <Route path='/ratings/'  component={RatingCmp} />
                 

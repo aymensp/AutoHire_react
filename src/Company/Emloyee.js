@@ -42,6 +42,7 @@ const Employee = forwardRef((props,ref) => {
  
    const classes = useStyles();
    
+
         
 
 
@@ -53,9 +54,10 @@ const Employee = forwardRef((props,ref) => {
 <br>
 </br>
 <h5>Employees</h5>
-<RatingPopup
- trigger={buttonPopup} setTrigger = {setButtonPopup}>
-            <h3>Rating</h3>
+<RatingPopup 
+ trigger={buttonPopup} setTrigger = {setButtonPopup}  >
+            <h3>teest</h3>
+            
         </RatingPopup>
 <br></br>
 <Grid

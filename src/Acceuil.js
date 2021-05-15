@@ -6,7 +6,9 @@ import Sidebar from './Sidebar';
 
 import Widgets from './Widgets';
 function Acceuil() {
-
+  const userr = localStorage.getItem('user')
+  const currentUser = JSON.parse(userr);
+  console.log(currentUser)
 return (
 
 
