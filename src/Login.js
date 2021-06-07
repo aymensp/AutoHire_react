@@ -26,7 +26,9 @@ function Login() {
         });
   }
    return (
-        <div style={{backgroundColor:'white'}} className="login">
+     <div className="background">
+
+<div style={{backgroundColor:'white'}} className="login"> 
             <img src={logo} alt=""/>
             
             <form>
@@ -34,8 +36,10 @@ function Login() {
                 <input value={password} onChange={e => setPassword(e.target.value)} placeholder="Password" type="password"/>
                 <button type="submit" onClick={loginToApp}>Sign In</button>
             </form>
-           
+           <p>New to AutoHire? <a href='/signup' className="aa"> Join now</a></p>
         </div>
+     </div>
+      
     )
 }
 export default Login

@@ -1,0 +1,132 @@
+
+
+.formMail {
+    border: 3px solid #f1f1f1;
+    font-family: Arial;
+  }
+  
+  .containerMail {
+    padding: 20px;
+    background-color: #f1f1f1;
+  }
+  .inputMail[type=submit] {
+    background-color: #04AA6D;
+    color: white;
+    border: none;
+  }
+  #mailUs{
+    width: 350px;
+    height: 200px;
+}  .inputMail[type=submit]:hover {
+    opacity: 0.8;
+  }
+  
+  .inputMail[type=text], inputMail[type=submit] {
+    width: 100%;
+    padding: 12px;
+    margin: 8px 0;
+    display: inline-block;
+    border: 1px solid #ccc;
+    box-sizing: border-box;
+  }
+  .popupMailCandidat
+{
+    top: 70px;
+  left:180px;
+  position: fixed;
+    
+   
+    width: 35%;
+ height: 60vh;
+    background-color:white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    
+    border: 1px solid gray;
+border-radius: 10px;
+
+}
+.popupCandidat
+{
+    top: 70px;
+  left:180px;
+  position: fixed;
+    
+   
+    width: 80%;
+ height: 90vh;
+    background-color:white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    
+    border: 1px solid gray;
+border-radius: 10px;
+
+}
+.btn_Cancel
+{
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    width: 25px;
+    height: 30px;
+    background-color: white;
+    color: gray;
+    border: none;
+}
+.btn_Can
+{
+    background-color: DodgerBlue;
+    border: none;
+    color: white;
+    padding: 12px 16px;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+.popup-inner
+{
+    position: relative;
+    padding: 32px;
+    width: 100%;
+    max-width: 600px; 
+    background-color: antiquewhite;
+    align-items: center;
+
+}
+.popup-inner .close-btn
+{
+    position: relative;
+    top: 16px;
+    right: 16px;
+  
+
+    
+
+}
+input [type ="radio"]
+{
+    display: none;
+    
+}
+.star
+{
+    cursor: pointer;
+    transition: color 200ms;
+}
+.divP 
+{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 150%;
+ 
+    
+}
+.hP 
+{
+    
+    top: 50px;
+}

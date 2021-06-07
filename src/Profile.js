@@ -13,6 +13,7 @@ import Auxiliary from './Auxiliary'
 import axios from 'axios';
 import Update from './updateProfile';
 import { useHistory } from 'react-router';
+import Widgets from './Company/Cwidget';
 
 function Profile() {
  const [purchasing ,setPurchasing] = useState(false);
@@ -149,6 +150,8 @@ onClick={()=>setPurchasing(true)}
         </div>
         
             <div style={{gridArea:'aside', height:'300px',backgroundColor:'black'}}></div>
+            <div style={{gridArea:'aside', height:'300px',backgroundColor:'white'}}>      <Widgets/></div>
+
         </div>
 </div>
 );

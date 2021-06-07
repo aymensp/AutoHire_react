@@ -1,0 +1,121 @@
+.Signup {
+  
+    width: 100%;
+    padding: 12px 0 96px;
+
+    }
+    .headerrr{
+    width: 100%;
+        text-align: center;
+        padding:  0 8px;
+        display: block;
+       
+    }
+    .headerrr >h1{
+    
+        font-size: 33px;
+        line-height: 1.25;
+        font-weight: 500;
+        color:#eb0392;
+       
+    }
+  
+    .formm {
+    
+       display: grid;
+       place-items: center;
+       margin: auto;
+       max-width: 375px;
+       border-radius: 10px ;
+       background-color:  white;
+       padding: 30px;
+     }
+      
+      
+      .formm > form {
+        display: flex;
+        flex-direction: column;
+    
+      }
+      .formm > form >label {
+        color: gray;
+        font-weight: 500;
+        font-size: 15px;
+        line-height: 1.7;
+      }
+      .formm > form >label::after{
+       content: '*';
+       color: #eb0392;
+       margin-left: 3px;
+      }
+      .p {
+        color: #bf1650;
+        margin-top: -10px;
+        margin-bottom: 10px;
+        font-weight: 700;
+      }
+      
+      .p::before {
+        display: inline;
+        content: "⚠ ";
+      }
+      .formm > form > input {
+        width: 96%;
+        height: 30px;
+        font-size: 15px;
+        font-weight: 500;
+        padding-left: 10px;
+        margin-bottom: 10px;
+        border-radius: 3px;
+        border: 1px solid black;
+        outline-color: #eb0392;
+      }
+    .formm > form > textarea {
+        font-size: 15px;
+        font-weight: 400;
+        height: 100px;
+        border-radius: 3px;
+        max-height: 200px;
+        padding-left: 10px;
+        margin-bottom: 17px;
+        border: 1px solid black;
+        overflow: scroll;
+        outline-color: #eb0392;
+        font-family: 'apple-system', 'BlinkMacSystemFont', 'Segoe UI', 'Roboto', 'Oxygen',
+        'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+        sans-serif;
+      
+    } 
+      .formm > form > select {
+        width: 100%;
+        height: 40px;
+        font-size: 15px;
+        font-weight: 500;
+        padding-left: 10px;
+        margin-bottom: 17px;
+        border-radius: 3px;
+        border: 1px solid black;
+        outline-color: #eb0392;
+      }
+      .formm > form > input:hover{
+      
+        box-shadow: inset 0 0 0 1px var(--color-border);
+      }
+      .formm > form > button {
+        width: 365px;
+        height: 50px;
+        font-size: large;
+        font-weight: bold;
+        color: #fff;
+        background-color: #eb0392;
+        border-color: #eb0392;
+        border-radius: 25px;
+        border: 0;
+      }
+      
+      
+      .formm > form > button:hover {
+      
+        background: #c20078;
+        border: none;
+      }

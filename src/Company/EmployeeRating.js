@@ -5,7 +5,6 @@ import Auxiliary from '../Auxiliary'
 import './company.css'
 import Employee from "./Emloyee"
 import FlipMove from 'react-flip-move'
-import './companyCardRight.css'
 import '../Company/RatingPopup.css'
 import {url} from '../BaseUrl'
 import axios from 'axios' ;

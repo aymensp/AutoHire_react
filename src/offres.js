@@ -8,7 +8,6 @@ import OffreCardsLeft from "./offreCardsLeft"
 import {url} from './BaseUrl'
 import axios from 'axios' ;
 import OffreCardRight from "./offreCardRight"
-import Spinner from "./Spinner/Spinner"
 import Menu from '@material-ui/core/Menu';
 import MenuItem from '@material-ui/core/MenuItem';
 import TablePagination from "@material-ui/core/TablePagination";
@@ -18,6 +17,8 @@ import mapboxgl from 'mapbox-gl';
 import 'mapbox-gl/dist/mapbox-gl.css';
 import MapboxDirections from '@mapbox/mapbox-gl-directions/dist/mapbox-gl-directions'
 import '@mapbox/mapbox-gl-directions/dist/mapbox-gl-directions.css'
+import Auxiliary from "./Auxiliary"
+import Skeleton from '@material-ui/lab/Skeleton';
 
 function Offres() {
 
@@ -141,7 +142,167 @@ function Offres() {
  ,[selected])
  
 var filteredList = multiFilter(posts, activeFilter);
-let tabs = <Spinner/>    
+let tabs =  <Auxiliary>
+  <Tabs  >   
+<TabNav>
+<TableContainer >  
+ <header style={{borderBottom:'1px solid rgba(0,0,0,0.08)',position:'sticky', zIndex:'1'}}>
+   <div style={{ padding:' 8px 12px 8px 10px',borderLeft:'solid 2px #eb0392' , alignItems:'center' , display:'flex' ,height:'56px'}}>
+    <h1 style={{fontSize:'18px',fontWeight:'400',lineHeight:'1.5'}}>Jobs based on your Profile</h1>
+   </div>
+ </header>
+     
+     <div style={{display:'flex',width:'100%'}} >
+       <div style={{margin:'8px'}} >
+      <Skeleton variant="rect" width={50} height={50} />
+      </div>
+      <div style={{flex:'0.9'}}>
+      <Skeleton height={25}  />
+      <Skeleton animation={false} width="60%" />
+      <Skeleton animation={false} width="40%"/>
+      <Skeleton animation="wave" width="40%"/>
+      </div>
+     
+    </div>
+    <div style={{display:'flex'}} >
+       <div style={{margin:'8px'}} >
+      <Skeleton variant="rect" width={50} height={50} />
+      </div>
+      <div style={{flex:'0.9'}}>
+      <Skeleton height={25} />
+      <Skeleton animation={false} width="60%" />
+      <Skeleton animation={false} width="40%"/>
+      <Skeleton animation="wave" width="40%"/>
+      </div>
+     
+    </div>
+    <div style={{display:'flex'}} >
+       <div style={{margin:'8px'}} >
+      <Skeleton variant="rect" width={50} height={50} />
+      </div>
+      <div style={{flex:'0.9'}}>
+      <Skeleton height={25}  />
+      <Skeleton animation={false} width="60%" />
+      <Skeleton animation={false} width="40%"/>
+      <Skeleton animation="wave" width="40%"/>
+      </div>
+     
+    </div>
+    <div style={{display:'flex'}} >
+       <div style={{margin:'8px'}} >
+      <Skeleton variant="rect" width={50} height={50} />
+      </div>
+      <div style={{flex:'0.9'}}>
+      <Skeleton height={25}/>
+      <Skeleton animation={false} width="60%" />
+      <Skeleton animation={false} width="40%"/>
+      <Skeleton animation="wave" width="40%"/>
+      </div>
+     
+    </div>
+    <div style={{display:'flex'}} >
+       <div style={{margin:'8px'}} >
+      <Skeleton variant="rect" width={50} height={50} />
+      </div>
+      <div style={{flex:'0.9'}}>
+      <Skeleton height={25}  />
+      <Skeleton animation={false} width="60%" />
+      <Skeleton animation={false} width="40%"/>
+      <Skeleton animation="wave" width="40%"/>
+      </div>
+     
+    </div>
+    <div style={{display:'flex'}} >
+       <div style={{margin:'8px'}} >
+      <Skeleton variant="rect" width={50} height={50} />
+      </div>
+      <div style={{flex:'0.9'}}>
+      <Skeleton height={25}  />
+      <Skeleton animation={false} width="60%" />
+      <Skeleton animation={false} width="40%"/>
+      <Skeleton animation="wave" width="40%"/>
+      </div>
+     
+    </div>  <div style={{display:'flex'}} >
+       <div style={{margin:'8px'}} >
+      <Skeleton variant="rect" width={50} height={50} />
+      </div>
+      <div style={{flex:'0.9'}}>
+      <Skeleton height={25}  />
+      <Skeleton animation={false} width="60%" />
+      <Skeleton animation={false} width="40%"/>
+      <Skeleton animation="wave" width="40%"/>
+      </div>
+     
+    </div>  <div style={{display:'flex'}} >
+       <div style={{margin:'8px'}} >
+      <Skeleton variant="rect" width={50} height={50} />
+      </div>
+      <div style={{flex:'0.9'}}>
+      <Skeleton height={25}  />
+      <Skeleton animation={false} width="60%" />
+      <Skeleton animation={false} width="40%"/>
+      <Skeleton animation="wave" width="40%"/>
+      </div>
+     
+    </div>
+    </TableContainer> 
+</TabNav>
+<TabContent >
+<div style={{borderBottom:'1px solid rgba(0,0,0,0.08)'}} className="offre_card">
+
+<div className="offre_card_header">
+<Skeleton variant="rect" width={120} height={120} />
+<div style={{marginBottom:'100px'}} className="offre_card_info">
+
+      <Skeleton height={25}  />
+      <Skeleton animation={false} width="60%" />
+      <Skeleton animation={false} width="40%"/>
+      <Skeleton animation="wave" width="40%"/>
+
+
+</div>
+
+
+
+
+</div>
+</div>
+<div className="offre_card_footer">
+<h2 style={{ fontSize:'15px' ,fontWeight:'normal' , color:'gray' , lineHeight:'1.7'}}> Posted by</h2>
+<div style={{ display:'flex'}}>
+<Skeleton variant="rect" width={50} height={50} style={{ marginRight: 10 }} />
+<Skeleton height="25px" animation={false} width="60%" />
+</div>
+</div >
+<div className='offre_description'> 
+<Skeleton animation={false} width="90%" />
+<Skeleton animation={false} width="90%" />
+<Skeleton animation={false} width="90%" />
+<Skeleton animation={false} width="90%" />
+
+<div className='offre_description_details'>
+<div className ='offre_box'>
+<Skeleton animation={false} width="60%" />
+<Skeleton animation={false} width="60%" />
+</div>
+<div className ='offre_box'>
+<Skeleton animation={false} width="60%" />
+<Skeleton animation={false} width="60%" />
+</div>
+<div className ='offre_box'>
+<Skeleton animation={false} width="60%" /><Skeleton animation={false} width="60%" />
+</div>
+<div className ='offre_box'>
+<Skeleton animation={false} width="60%" /><Skeleton animation={false} width="60%" />
+</div>
+
+</div>
+
+</div>
+</TabContent>
+</Tabs>
+            </Auxiliary>    
 if (posts.length!=0)
 {
 tabs =  <Tabs selected='1' onLeaveTab={(currentIndex, nextIndex) => { console.log("leaveTab", currentIndex, nextIndex) }}
@@ -213,7 +374,7 @@ onShowTab={(e) => {
 </TabNav>
 <TabContent >
 <div></div>
-   {filteredList.slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage).map(({ _id,  titre, industry,company, address ,createdAt,description ,longitude,latitude, salary , poste , jobTime , type,creator,users,link   }) => (
+   {filteredList.slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage).map(({ _id,  titre, industry,company, address ,createdAt,description ,longitude,latitude, salary , poste , jobTime , type,creator,users,saves,link   }) => (
      <TabPanel key={_id}>
        <FlipMove>
          <OffreCardRight
@@ -233,6 +394,7 @@ onShowTab={(e) => {
        type ={type}
        creator={creator}
        users={users}
+       saves={saves}
        link={link}
        selected={selected}
        ref={_id}
@@ -244,7 +406,7 @@ onShowTab={(e) => {
 
   
 <div ref={div} style={{margin:'10px',padding:'15px',borderRadius:'15px',backgroundColor:'white',border:'1px solid rgba(0, 0, 0, 0.08)'}}>
-       <h3 style={{marginBottom:'30px'}}>See your commute</h3>
+       <h4 style={{marginBottom:'30px',fontSize:'19px',fontWeight:'500'}}>See your commute</h4>
        <div 
         ref={mapWrapper} 
         className="mapWrapper" 

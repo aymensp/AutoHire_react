@@ -3,11 +3,11 @@ import Feed from './Feed';
 import Header from './Header';
 import Auxiliary from './Auxiliary';
 import List from './List'
-import BookmarkIcon from '@material-ui/icons/Bookmark';
+import BorderColorIcon from '@material-ui/icons/BorderColor';
 
 function PostedJob() {
 
-  const [rh,setRh] = useState('applied')
+  const [rh,setRh] = useState('opened')
 
 return(
 
@@ -19,10 +19,10 @@ return(
        <aside>
      
       <h2>
-        <BookmarkIcon style={{color:'#eb0392',paddingRight:'5px'}}/>
+        <BorderColorIcon style={{color:'#eb0392',paddingRight:'5px'}}/>
 
         
-        My Jobs</h2>
+        Manage Job Posting</h2>
        
       { rh==='saved' ? 
 

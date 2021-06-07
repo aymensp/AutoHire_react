@@ -1,13 +1,10 @@
-import { Avatar, Button } from '@material-ui/core'
+
 import React ,{ forwardRef ,useDebugValue,useEffect,useState}  from 'react'
-import logo from '../assets/offre.jpeg'
+import logo from '../assets/pdp.png'
 import Auxiliary from '../Auxiliary'
 import './company.css'
 import RatingPopup from './RatingPopup'
-import {BrowserRouter as Router,Route,Link,Switch} from "react-router-dom";
 
-import FlipMove from 'react-flip-move'
-import './companyCardRight.css'
 import '../Company/RatingPopup.css'
 import {url} from '../BaseUrl'
 import axios from 'axios' ;
@@ -16,10 +13,13 @@ import {FaStar} from "react-icons/fa";
 const RatingCmp = forwardRef((props) => {
     const [posts, setPosts] = useState([])
    // const idCompany = localStorage.getItem('cmp')
-const {idCompany} = props.match.params;
+   let nomCmp=props.location.pathname.split('/')[2];
+   const userr = localStorage.getItem('user')
+   const currentUser = JSON.parse(userr);
+
    useEffect(() => {
       
-    axios.get(`${url}avis/e/Wevioo`).then( res => {
+    axios.get(`${url}avis/e/${nomCmp}`).then( res => {
         console.log(res.data)
         setPosts(res.data)
        }) 
@@ -56,14 +56,19 @@ const [buttonPopup,setButtonPopup] = useState(false);
 const [rating ,setRating] = useState(null);
 const [hover,setHover] =useState(null);
 const [comment, setComment] = useState('');
+const [erreur, setErreur] = useState('');
 const RateFn = (e) => {
+ 
     e.preventDefault();
+    if((comment !=="")&&(rating>0))
+    {
     axios.post(`${url}avis/newAvis`, {
         niveau: rating,
           commentaire: comment,
-          entreprise: "Wevioo",
-          personne: "Ayman"
+          entreprise: nomCmp,
+          personne: currentUser.username
       })
+    
       .then( (response)=>{
         setComment("")
       setRating(0)
@@ -73,18 +78,25 @@ const RateFn = (e) => {
       , (error) => {
         console.log(error);
       });
+    }
+
+else{
+  setErreur("Empty Comment or Stars !  ")
+}
+
 }
     return (
         
        <Auxiliary>
     
-<div className='company_description'> 
+<div className='company_description' style={{height:'1000px'} }> 
 
         
          
 <div className='absolute'> 
 <h3>Rate this Company!</h3>
 <form>
+  
                   <div>
                       {[... Array(5)].map((star,i)=>
                       {
@@ -103,8 +115,13 @@ const RateFn = (e) => {
                     </div>
                   
                     <input value={comment} onChange={e => setComment(e.target.value)}  type="text"/>
-      <button type="submit" style={{ color : 'white' , fontSize:'13px',lineHeight:'1.7' }} className="btnAvis" onClick={(e)=>RateFn(e)}>rate</button>
-
+               <br></br>  
+                <input value={erreur} onChange={e => setErreur(e.target.value)}  type="text" style ={{border:'none',color:'red'}}disabled/>
+                <br></br> <button type="submit" style={{ color : 'white' , fontSize:'13px',lineHeight:'1.7' }} className="btnAvis" onClick={
+   
+        
+        (e)=>RateFn(e)}>rate</button>
+<br></br>
 
                     </form>
        <RatingPopup
@@ -134,9 +151,9 @@ trigger={buttonPopup} setTrigger = {setButtonPopup}>
                          
                       })  }</h6>
   
-        
+  <h6 className='hide'> 
 
-  {avg = s/l ,compare()  }
+  {avg = s/l ,compare()  }</h6>
  
 
     
@@ -171,12 +188,12 @@ trigger={buttonPopup} setTrigger = {setButtonPopup}>
                        
                       
                          
-                       return  (  <p id = "comment" style={{borderRadius:'25px'}}>
+                       return  (  <p id = "comment" style={{borderRadius:'8px',height:'95px',width:'230px',paddingLeft:'50px'}}>
+<h3> 
+                        
+<img className=' imgCircleComment' src={logo} style={{width:'25%'} }></img>&nbsp;&nbsp;
 
-<h2>                         
-<img className='imgCircleComment' src={logo} ></img> &nbsp;&nbsp;
-
-Rania </h2>
+{personne} </h3>
 
 
 <div className='starsComment'>

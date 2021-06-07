@@ -74,18 +74,18 @@ return(
     <label for="resume">Resume</label>
                 <input  className="butt" type="file"  onChange={(event) => onFileUpload(event)} />
                 <label for="firstname">Experience</label>
-                <textarea onChange={(event)=> setExperience(event.target.value)} type="text" id="experience" defaultValue={props.experience} value={experience} />
+                <textarea onChange={(event)=> setExperience(event.target.value)} type="text" id="experience" value={experience} />
         
            
                 <label for="lastname">Education</label>
-                <textarea onChange={(event)=> setEducation(event.target.value)} type="text" id="education" defaultValue={props.education} value={education} />
+                <textarea onChange={(event)=> setEducation(event.target.value)} type="text" id="education" value={education} />
            
          
                 <label for="email">Skills</label>
-                <textarea onChange={(event)=> setSkills(event.target.value)} type="text" id="text" defaultValue={props.skills} value={skills} />
+                <textarea onChange={(event)=> setSkills(event.target.value)} type="text" id="text"  value={skills} />
           
          
-          <button onClick={()=>saveInfo()} className="but" type="submit">Enregistrer</button>
+          <button onClick={()=>saveInfo()} className="but" type="submit">Enregistre</button>
        
       
     </div>

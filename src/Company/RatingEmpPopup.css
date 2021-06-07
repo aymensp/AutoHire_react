@@ -2,12 +2,12 @@
 .popup
 {
     top: 70px;
-  left:320px;
+  left:800px;
   position: fixed;
     
    
-    width: 50%;
- height: 80vh;
+    width: 35%;
+ height: 70vh;
     background-color:white;
     display: flex;
     justify-content: center;

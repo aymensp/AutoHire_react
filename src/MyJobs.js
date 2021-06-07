@@ -11,8 +11,7 @@ const [hamma,setHamma] = useState(<List  rh={rh}/>)
 
 useEffect(()=>{
 setHamma(<List  rh={rh}/>);
-console.log(hamma);
-console.log(rh);
+
 },[rh])
 return(
     

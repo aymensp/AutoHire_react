@@ -77,15 +77,20 @@ padding: 25px;
       cursor: pointer;
       
   }
+  @keyframes example {
+    0%   { color:  white;
+           box-shadow: inset 0 0 0 1px white;}
+  
+    100% { color:  #eb0392;
+      box-shadow: inset 0 0 0 1px #eb0392;}
+  }
   .btn2{
-
-    
-    padding-left:  1.2rem;
-    padding-right: 1.2rem;
-    font-weight:bold;
-    font-size : 100%;
-    border-radius :20px;
-    border:none;
+     padding-left:  1.2rem;
+     padding-right: 1.2rem;
+     font-weight:bold;
+     font-size : 100%;
+     border-radius :20px;
+     border:none;
      align-items: center;
      height:40px ;
      margin-right:8px ;
@@ -93,7 +98,7 @@ padding: 25px;
      background-color: white;
      color:  #eb0392;
      box-shadow: inset 0 0 0 1px #eb0392;
-    
+     animation: example 834ms ;
   }
   .btn2:hover{
     background-color: #ffd1ed;
@@ -115,13 +120,24 @@ padding: 25px;
     font-size: 15px;
     font-weight: 600;
   }
-  .offre_description > p {
+  .desc {
 
     margin-top: 15px;
     line-height: 1.5;
     font-size: 14px;
     font-weight: 400;
     
+  }
+  .company_details{
+    border-radius: 15px;
+    border: 1px solid rgba(0, 0, 0, 0.08);
+  
+    background-color: white ;
+    padding: 16px;
+  }
+  .company_details>h3{
+    font-size: 19px;
+    font-weight: 500;
   }
   .mapWrapper {
     width: auto;

@@ -1,0 +1,25 @@
+.buttonSujet {
+    background-color: #eb0392; /* Green */
+    border: none;
+    color: white;
+    padding: 16px 32px;
+    padding-left: 50px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    transition-duration: 0.4s;
+    cursor: pointer;
+  }
+  h1 {
+    display: block;
+    font-size: 3em;
+    margin-top: 0.67em;
+    margin-bottom: 0.67em;
+    margin-left: 0;
+    margin-right: 0;
+    font-weight: bold;
+    text-align: center;
+    color: #eb0392;
+  }

@@ -9,16 +9,22 @@ import { useHistory } from 'react-router'
 import CheckCircleIcon from '@material-ui/icons/CheckCircle';
 import ChevronRightIcon from '@material-ui/icons/ChevronRight';
 import {FacebookShareButton,FacebookIcon, LinkedinShareButton, LinkedinIcon} from 'react-share'
+import ShowMoreText from 'react-show-more-text';
 
 
-const offreCardRight = forwardRef(({id, title, company, addresse, date , description  , salary ,longitude,latitude,industry, poste , jobTime , type,creator,users ,link ,selected }) => {
+const offreCardRight = forwardRef(({id, title, company, addresse, date , description  ,salary,industry, poste , jobTime , type,creator,users ,saves,link  }) => {
     const userr = localStorage.getItem('user')
     const currentUser = JSON.parse(userr); 
-  
+    const Capitalize =(str) =>{
+        return str.charAt(0).toUpperCase() + str.slice(1);
+        }
     const [anchorEl, setAnchorEl] = React.useState(null);
     let history = useHistory()
     const [dateNow, setDate] = useState(date)
     const [candiates, setCandidates] = useState([])
+    const [companyy,setCompany] =useState()
+    const [creatorr,setCreator] =useState()
+    const [savedJobs,setSavedJobs] = useState([])
     const handleClick = (event) => {
         setAnchorEl(event.currentTarget);
       };
@@ -28,35 +34,42 @@ const offreCardRight = forwardRef(({id, title, company, addresse, date , descrip
         setAnchorEl(null);
       };
     useEffect(() => {
-
-   
-
-  
-
       
-
+    axios.get(`${url}entreprise/n/${company}`)  
+    .then(res=>{
+       setCompany(res.data[0])
+       if(companyy!==undefined){
+       }    
+    }) 
+    axios.post(`${url}user/me/`,{
+        username : creator
+    })  
+    .then(res=>{
+      setCreator(res.data)   
+     
+    }) 
+           
         const hamma =[];
         if(users){
             users.map((item)=>{setCandidates([...hamma,item])})
         }
-      
-        var timeStampDiffInSeconds = null;
-         const currentTimeStampInSeconds = parseInt(new Date().getTime()/1000);
+       
+        if(saves){
+            setSavedJobs(saves)
+        }  
+            var timeStampDiffInSeconds = null;
+            const currentTimeStampInSeconds = parseInt(new Date().getTime()/1000);
             const postedDateTimeStampInSeconds = parseInt(new Date(date).getTime()/1000);
             timeStampDiffInSeconds = currentTimeStampInSeconds-postedDateTimeStampInSeconds;
          
-        
             if  (timeStampDiffInSeconds>=0 && timeStampDiffInSeconds<60*3) {
                 setDate("A few seconds ago") ;
               }
-                 // between 0 to 180 seconds
-               
-               
+ 
               else if (timeStampDiffInSeconds>=60*3 && timeStampDiffInSeconds<60*60)
                  //between 180 seconds to 60 minutes
-                 {setDate("Posted "+parseInt(timeStampDiffInSeconds/(60*3)) + "minutes ago")  ;}
-                 
-            
+                 {setDate("Posted "+parseInt(timeStampDiffInSeconds/(60*3)) + "minutes ago")  ;}       
+
              else if  ( timeStampDiffInSeconds>=60*60 && timeStampDiffInSeconds<60*60*24)
                  //between 60 minutes to 24 hours
                  {setDate("Posted "+parseInt(timeStampDiffInSeconds/(60*60)) + "hours ago") ; }               
@@ -71,9 +84,7 @@ const offreCardRight = forwardRef(({id, title, company, addresse, date , descrip
              else if ( timeStampDiffInSeconds>=60*60*24*30 && timeStampDiffInSeconds<60*60*24*30*365)
                  // between 30 days to 365 days
                 { setDate("Posted "+parseInt(timeStampDiffInSeconds/(60*60*24*30)) + "months ago")  ;}
-            
-              
-        }
+       }
   ,[ ])
   const Navigate =(company)=>{
     history.push({pathname:'/company',
@@ -93,11 +104,38 @@ const offreCardRight = forwardRef(({id, title, company, addresse, date , descrip
                 console.log(error);
               });
  }
- 
+ const Save =() => {
+    axios.post(`${url}offre/Save/offre`, {
+        idUser:currentUser._id,
+        idOffre:id
+           })
+              .then((response) => {
+                
+                console.log(response.data)
+                setSavedJobs(response.data.saves)
+                
+            }, (error) => {
+                console.log(error);
+              });
+ }
+ const Unsave =() => {
+    axios.post(`${url}offre/Unsave/offre`, {
+        idUser:currentUser._id,
+        idOffre:id
+           })
+              .then((response) => {
+                
+                console.log(response.data)
+                setSavedJobs(response.data.saves)
+               
+            }, (error) => {
+                console.log(error);
+              });
+ }
+
     return (
        <Auxiliary>
            <div style={{borderBottom:'1px solid rgba(0,0,0,0.08)'}} className="offre_card">
-
            <div className="offre_card_header">
      <img style={{width:'120px' , height:'120px'}} src={link?
                     logo:
@@ -105,19 +143,16 @@ const offreCardRight = forwardRef(({id, title, company, addresse, date , descrip
      <div className="offre_card_info">
          <h2>{title}</h2>
          <p onClick={()=>Navigate(company)} >{company}</p>
-         <p >{addresse}</p>
+         <p style={{textDecoration:'none',cursor:'auto'}} >{addresse}</p>
          <div style={{   display: 'flex' , marginTop:'2px'}}>
              <p style={{ color : 'rgba(0,0,0,0.6)' , fontSize:'13px' ,lineHeight:'1.7',marginRight:'8px'}}>
               {dateNow}
              </p>
-
             { candiates.length!==0? 
-            
             <p style={{ color : '#eb0392' , fontSize:'13px',lineHeight:'1.7' }}> {candiates.length} candidats</p> 
         :
         <p style={{ color : '#eb0392', fontSize:'13px',lineHeight:'1.7' }}> Be the first applicant</p> }
-         </div>
-       
+         </div>  
        {candiates.includes(currentUser._id)?
      <div style={{   display: 'flex',flexWrap:'wrap' ,alignItems:'center', marginTop:'10px'}}> 
      <CheckCircleIcon style={{color:'green',width:'20px',height:'20px'}}/>
@@ -130,21 +165,18 @@ const offreCardRight = forwardRef(({id, title, company, addresse, date , descrip
        :
        <div style={{   display: 'flex',flexWrap:'wrap' , marginTop:'10px'}}> 
       {link? <a href={link} > <button className="btn" >Apply on TanitJobs</button></a>: <button onClick={ Apply} className="btn" > Apply now</button>}
-        <button className="btn2" > Save</button>
+      {savedJobs.includes(currentUser._id)?  <button onClick={ Unsave}  className="btn2" > Unsave</button> : <button onClick={ Save}  className="btn2" > Save</button>  } 
         </div>
-       }
-    
+       }  
      </div>
-
-
      <div className="pencil"onClick={(handleClick)}>
-<div style={{marginRight:'10px'}}>
+     <div style={{marginRight:'10px'}}>
      <FacebookShareButton
     url={`autohire.com/jobs/${id}`}
     quote={title +" "+ company +" " + addresse}
     hashtag="#AutoHire #Jobs">
     <FacebookIcon size={40} round={true}/>
-</FacebookShareButton>
+    </FacebookShareButton>
 </div>
 <LinkedinShareButton
 title={title}
@@ -161,22 +193,52 @@ url={`autohire.com/jobs/${id}`}
     hashtag="#AutoHire #Jobs">
     <FacebookIcon  />
 </FacebookShareButton> */}
-     
  </div>
 </div>
-<div className="offre_card_footer">
-    <h2 style={{ fontSize:'15px' ,fontWeight:'normal' , color:'gray' , lineHeight:'1.7'}}> Posted by</h2>
-<div style={{ display:'flex'}}>
-<Avatar src={`${url}images/${creator}.jpeg`} style={{height:'50px' ,width:'50px'}}> A </Avatar>
-<h3 style={{margin:'8px',fontWeight:'600'}}>{creator}</h3>
+{ creatorr ?
+    <div className="offre_card_footer">
+<h2 style={{ fontSize:'15px' ,fontWeight:'normal' , color:'gray' , lineHeight:'1.7'}}> Posted by</h2>
+<div style={{ display:'flex',alignItems:'center'}}>
+<Avatar src={`${url}images/${creator}.jpeg`} style={{height:'50px' ,width:'50px'}}> </Avatar>
+<div>
+<h3 style={{marginLeft:'8px',fontWeight:'600',lineHeight:'1.4'}}>{Capitalize(creatorr.firstName)}  {Capitalize(creatorr.lastName)}</h3>
+<p style={{marginLeft:'8px',fontWeight:'400'}}>{Capitalize(creatorr.position) +" at "+ Capitalize(creatorr.entreprise)}</p>
+</div>
 </div>
 </div >
+
+:
+<div></div>
+
+}
+
 <div className='offre_description'> 
     <h5 >Job Description</h5>
-    <p>
-   {description}
-    </p>
-    <div className='offre_description_details'>
+    <ShowMoreText
+                lines={9}
+                more='Show more'
+                less='Show less'
+                className='desc'
+                anchorClass='my-anchor-css-class'
+                expanded={false}          
+            >
+                minim veniam, quis nostrud exercitation ullamco laboris nisi   adipiscing elit, sed do eiusmod tempor incididunt ut labore
+                ut aliquip ex Lorem ipsum dolor sit amet, consectetur
+                adipiscing elit, sed do eiusmod tempor incididunt ut labore
+                minim veniam, quis nostrud exercitation ullamco laboris nisi
+                ut aliquip ex Lorem ipsum dolor sit amet, consectetur
+                adipiscing elit, sed do eiusmod tempor incididunt ut labore  minim veniam, quis nostrud exercitation ullamco laboris nisi
+                ut aliquip ex Lorem ipsum dolor sit amet, consectetur
+                adipiscing elit, sed do eiusmod tempor incididunt ut labore  minim veniam, quis nostrud exercitation ullamco laboris nisi
+                ut aliquip ex Lorem ipsum dolor sit amet, consectetur
+                adipiscing elit, sed do eiusmod tempor incididunt ut labore
+                et dolore magna aliqua. Ut enim ad minim veniam, quis
+                nostrud exercitation ullamco laboris nisi ut aliquip ex
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed
+                do eiusmod tempor incididunt ut labore et dolore magna
+                aliqua. Ut enim ad minim veniam, quis nostrud exercitation
+            </ShowMoreText>
+<div className='offre_description_details'>
 <div className ='offre_box'>
     <h3> Seniority Level</h3>
     <p> {poste}</p>
@@ -193,18 +255,35 @@ url={`autohire.com/jobs/${id}`}
     <h3> Job Functions</h3>
     <p> {type}</p>
 </div>
-
-    </div>
-  
+    </div> 
 </div>
-
-
-       </Auxiliary>
-        
-
+{ companyy!==undefined ?
+    <div className='company_details'> 
+<h3>About the company</h3>
+<div>
+    <div style={{display:'flex',alignItems:'center'}}>
+        <img style={{width:'72px',height:'72px',margin:'10px'}} src={link?
+                    logo:
+                    `${url}images/${company}.png`}></img>
+        <h3>{company}</h3>
+    </div>
+</div>
+          <ShowMoreText
+                /* Default options */
+                lines={3}
+                more='Show more'
+                less='Show less'
+                className='desc'
+                anchorClass='my-anchor-css-class'
+                expanded={true}    
+            >
+           {companyy.about}
+            </ShowMoreText>
+</div>:
+<div></div>
+}
+       </Auxiliary>       
     )
-
 })
-
 
 export default offreCardRight
