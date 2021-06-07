@@ -51,7 +51,9 @@
     "react-share": "^4.4.0",
     "react-show-more-text": "^1.4.6",
     "react-smarttab": "^2.0.1",
-    "twemoji": "^13.0.1"
+    "twemoji": "^13.0.1",
+    "web-vitals": "^0.2.4",
+    "file-saver": "^2.0.1"
   },
   "scripts": {
     "start": "react-scripts start",

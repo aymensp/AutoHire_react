@@ -2,7 +2,7 @@ import React, { useEffect } from 'react';
 import { withRouter ,Redirect,Switch,Route, Router, useHistory,} from 'react-router-dom';
 import Acceuil from './Acceuil';
 import './App.css';
-import Login from './Login'; 
+import Login from './Login';
 import Profile from './Profile';
 import Offres from './offres';
 import PostedJob from './PostedJob';
@@ -14,6 +14,7 @@ import Chat from './chat';
 import GotoT from './Test/goto';
 import Test from './Test/test2';
 import AppV from './video/pages/App';
+import resumeCreator from './resumeCreator';
 
 import Applicants from './applicants'
 import Signup from './Signup';
@@ -58,8 +59,9 @@ const PrivateRoute = ({ component: Component, roles, ...rest }) => (
      <Route path="/chat" component={Chat}/>
      <PrivateRoute exact path="/video"  component={AppV}/>
      <PrivateRoute exact path="/gotot"  component={GotoT}/>
-    
-     </Switch> 
+     <Route path="/resumeCreator" component={resumeCreator} />
+
+     </Switch>
    </div>
   );
 }

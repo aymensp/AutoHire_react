@@ -14,6 +14,7 @@ import axios from 'axios';
 import Update from './updateProfile';
 import { useHistory } from 'react-router';
 import Widgets from './Company/Cwidget';
+import UserForm from './resumeCreator/UserForm';
 
 function Profile() {
  const [purchasing ,setPurchasing] = useState(false);
@@ -29,16 +30,16 @@ function Profile() {
      });
        }
  useEffect(() => {
-        
+
       axios.post(`${url}user/me`, {
         username: currentUser.username,
-        
+
       }).then( res => {
      setUser(res.data) ;
-     })  
-     
+     })
+
     }
-       
+
 ,[])
 const Capitalize =(str) =>{
     return str.charAt(0).toUpperCase() + str.slice(1);
@@ -49,11 +50,11 @@ if ((resume === "NORESUME") || (resume === "null") ){
    return false;
 }
 return true;
-} 
+}
 const profileCards = (
 <div style={{borderRadius:'10px',backgroundColor:'white' ,paddingTop:'10px',paddingBottom:'10px',border:'1px solid lightgray'}}>
 
-<Modal experience={user.experience} skills={user.skills} education={user.education} show={purchasing} modalClosed={()=>setPurchasing(false)}/> 
+<Modal experience={user.experience} skills={user.skills} education={user.education} show={purchasing} modalClosed={()=>setPurchasing(false)}/>
 
 <div className="profile__content_top" style={{marginBottom:'0px',borderRadius:'0px',border:'0px'}}>
 
@@ -76,7 +77,7 @@ const profileCards = (
                     </p>
              <p style={{fontSize:"13px" , lineHeight: '1.3333' ,margin:'20px'}}>{user.education} </p>
 </div>
-<div className="profile__content_top" style={{marginBottom:'0px' ,border:'0px',borderRadius:'0px'}}>  
+<div className="profile__content_top" style={{marginBottom:'0px' ,border:'0px',borderRadius:'0px'}}>
 
 
                     <p style={{fontSize:"18px", lineHeight: '1.3333' ,marginLeft:'20px' ,marginTop:'20px'}}>
@@ -87,12 +88,18 @@ const profileCards = (
 </div>
 );
 const hamma = checkResume(user.resume);
+const NavigatetoCv = () => {
+    history.push({
+        pathname: '/resumeCreator',
+
+    });
+}
 return(
 <div className="profile">
 
-<Header />     
+<Header />
         <div className="profile__body">
-            
+
             <div className="profile__content_top_left">
 
                 <div className="profile__content_top">
@@ -101,7 +108,7 @@ return(
                 <Avatar  src={`${url}images/${currentUser.username}.jpeg`} className="profile__content_top__avatar"/>
                 <div style={{flex:'0.97' }}>
                 </div>
-                <Update firstName={currentUser.firstName} lastName={currentUser.lastName} position={currentUser.position} entreprise={currentUser.entreprise} address={currentUser.address} show={purchasing1} modalClosed={()=>setPurchasing1(false)}/> 
+                <Update firstName={currentUser.firstName} lastName={currentUser.lastName} position={currentUser.position} entreprise={currentUser.entreprise} address={currentUser.address} show={purchasing1} modalClosed={()=>setPurchasing1(false)}/>
 
                 <div className="pencil" onClick={()=>setPurchasing1(true) }>
                 <CreateTwoToneIcon className="pencil__icon" />
@@ -132,23 +139,32 @@ return(
                 </div>
                 <p style={{fontSize:"13px" , lineHeight: '1.3333' ,margin:'20px'}}>
                  A software engineering student, passionate about Web Development, Mobile Development,Cyber Security enthusiast, fearless
-                 and always eager to learn. I always keep my self up to date with the latest technologies and I enjoy working on innovative 
-                 projects. Tags: JavaScript, TypeScript, Angular, Android ,Redux, HTML5, CSS3, Bootstrap, JQuery, Sass, UI/UX Concepts, 
+                 and always eager to learn. I always keep my self up to date with the latest technologies and I enjoy working on innovative
+                 projects. Tags: JavaScript, TypeScript, Angular, Android ,Redux, HTML5, CSS3, Bootstrap, JQuery, Sass, UI/UX Concepts,
                  NodeJS, MySQL, MongoDB, REST APIs, ExpressJS, GraphQL, Git
                 </p>
                 </div>
-               {  hamma ? profileCards : 
-                <Auxiliary> 
-<Modal experience={user.experience} skills={user.skills} education={user.education} show={purchasing} modalClosed={()=>setPurchasing(false)}/> 
-<div className="profile__content_top" style={{padding : '10px',alignItems: 'center' }}> 
-<button style={{backgroundColor:'#eb0392',border:'none' , color : 'white' ,borderRadius :'10px', alignItems: 'center',width :'300px' ,height:'30px'}} 
+               {  hamma ? profileCards :
+                <Auxiliary>
+<Modal experience={user.experience} skills={user.skills} education={user.education} show={purchasing} modalClosed={()=>setPurchasing(false)}/>
+<div className="profile__content_top" style={{padding : '10px',alignItems: 'center' }}>
+<button style={{backgroundColor:'#eb0392',border:'none' , color : 'white' ,borderRadius :'10px', alignItems: 'center',width :'300px' ,height:'30px'}}
 onClick={()=>setPurchasing(true)}
 > Upload Resume To update your Profile</button>
+<button style={{ backgroundColor: '#eb0392', border: 'none', 'margin': '10px', color: 'white', borderRadius: '10px', alignItems: 'center', width: '300px', height: '30px' }}
+                                    onClick={
+                                        () => NavigatetoCv()
+
+
+
+
+                                    }
+                                > Create Your Resume On Our Website</button>
 </div>
 </Auxiliary>
               }
         </div>
-        
+
             <div style={{gridArea:'aside', height:'300px',backgroundColor:'black'}}></div>
             <div style={{gridArea:'aside', height:'300px',backgroundColor:'white'}}>      <Widgets/></div>
 
